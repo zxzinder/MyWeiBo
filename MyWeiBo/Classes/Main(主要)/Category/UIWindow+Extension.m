@@ -32,6 +32,7 @@
         [[NSUserDefaults standardUserDefaults] synchronize];
         
     }
+     //self.rootViewController = [[MyWBNewfeatureViewController alloc] init];
     
 }
 

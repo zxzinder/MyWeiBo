@@ -26,7 +26,6 @@
 		9AAE62861BFC5E060056C52B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE62851BFC5E060056C52B /* Images.xcassets */; };
 		9AAE62891BFC672C0056C52B /* MyWBTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE62881BFC672C0056C52B /* MyWBTabBarViewController.m */; };
 		9AAE628D1BFC690B0056C52B /* MyWBTest1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE628B1BFC690B0056C52B /* MyWBTest1ViewController.m */; };
-		9AAE628E1BFC690B0056C52B /* MyWBTest1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE628C1BFC690B0056C52B /* MyWBTest1ViewController.xib */; };
 		9AAE62921BFC69C90056C52B /* MyWBTest2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE62901BFC69C90056C52B /* MyWBTest2ViewController.m */; };
 		9AAE62931BFC69C90056C52B /* MyWBTest2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE62911BFC69C90056C52B /* MyWBTest2ViewController.xib */; };
 		9AAE62961BFC6D280056C52B /* MyWBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE62951BFC6D280056C52B /* MyWBNavigationController.m */; };
@@ -101,7 +100,6 @@
 		9AAE62881BFC672C0056C52B /* MyWBTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBTabBarViewController.m; sourceTree = "<group>"; };
 		9AAE628A1BFC690B0056C52B /* MyWBTest1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBTest1ViewController.h; sourceTree = "<group>"; };
 		9AAE628B1BFC690B0056C52B /* MyWBTest1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBTest1ViewController.m; sourceTree = "<group>"; };
-		9AAE628C1BFC690B0056C52B /* MyWBTest1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWBTest1ViewController.xib; sourceTree = "<group>"; };
 		9AAE628F1BFC69C90056C52B /* MyWBTest2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBTest2ViewController.h; sourceTree = "<group>"; };
 		9AAE62901BFC69C90056C52B /* MyWBTest2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBTest2ViewController.m; sourceTree = "<group>"; };
 		9AAE62911BFC69C90056C52B /* MyWBTest2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWBTest2ViewController.xib; sourceTree = "<group>"; };
@@ -445,7 +443,6 @@
 			children = (
 				9AAE628A1BFC690B0056C52B /* MyWBTest1ViewController.h */,
 				9AAE628B1BFC690B0056C52B /* MyWBTest1ViewController.m */,
-				9AAE628C1BFC690B0056C52B /* MyWBTest1ViewController.xib */,
 				9AAE628F1BFC69C90056C52B /* MyWBTest2ViewController.h */,
 				9AAE62901BFC69C90056C52B /* MyWBTest2ViewController.m */,
 				9AAE62911BFC69C90056C52B /* MyWBTest2ViewController.xib */,
@@ -634,7 +631,6 @@
 			files = (
 				9AAE62861BFC5E060056C52B /* Images.xcassets in Resources */,
 				9AAE62AC1BFC7BA20056C52B /* MyWBTest3ViewController.xib in Resources */,
-				9AAE628E1BFC690B0056C52B /* MyWBTest1ViewController.xib in Resources */,
 				9AAE62931BFC69C90056C52B /* MyWBTest2ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -854,7 +850,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/macmini/Documents/zxcode/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
+				GCC_PREFIX_HEADER = "/Users/zinder/Documents/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
 				INFOPLIST_FILE = MyWeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
@@ -871,7 +867,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/macmini/Documents/zxcode/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
+				GCC_PREFIX_HEADER = "/Users/zinder/Documents/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
 				INFOPLIST_FILE = MyWeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
