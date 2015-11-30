@@ -33,8 +33,13 @@
 		9AAE62AB1BFC7BA20056C52B /* MyWBTest3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE62A91BFC7BA20056C52B /* MyWBTest3ViewController.m */; };
 		9AAE62AC1BFC7BA20056C52B /* MyWBTest3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAE62AA1BFC7BA20056C52B /* MyWBTest3ViewController.xib */; };
 		9AE2A6C11C0455EB004A1A3F /* MyWBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2A6C01C0455EB004A1A3F /* MyWBTabBar.m */; };
+		9AE4D9A31C0BF5750042AA25 /* MyWBLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D9A21C0BF5750042AA25 /* MyWBLoadMoreFooter.m */; };
+		9AE4D9A51C0BF58B0042AA25 /* MyWBLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE4D9A41C0BF58B0042AA25 /* MyWBLoadMoreFooter.xib */; };
 		9AF9972D1C056045000FCF23 /* MyWBNewfeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9972C1C056045000FCF23 /* MyWBNewfeatureViewController.m */; };
 		9AF997321C05AAF9000FCF23 /* MyWBOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF997311C05AAF9000FCF23 /* MyWBOAuthViewController.m */; };
+		9AFEEC1F1C07FA9E00D52971 /* MyWBTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEEC1E1C07FA9E00D52971 /* MyWBTitleButton.m */; };
+		9AFEEC221C0838FF00D52971 /* MyWBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEEC211C0838FF00D52971 /* MyWBUser.m */; };
+		9AFEEC251C08394E00D52971 /* MyWBStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEEC241C08394E00D52971 /* MyWBStatus.m */; };
 		A3779B336A10A4AC89263A3B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F0240942FE93AE3C13577C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -112,10 +117,19 @@
 		9AAE62AA1BFC7BA20056C52B /* MyWBTest3ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWBTest3ViewController.xib; sourceTree = "<group>"; };
 		9AE2A6BF1C0455EB004A1A3F /* MyWBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBTabBar.h; sourceTree = "<group>"; };
 		9AE2A6C01C0455EB004A1A3F /* MyWBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBTabBar.m; sourceTree = "<group>"; };
+		9AE4D9A11C0BF5750042AA25 /* MyWBLoadMoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBLoadMoreFooter.h; sourceTree = "<group>"; };
+		9AE4D9A21C0BF5750042AA25 /* MyWBLoadMoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBLoadMoreFooter.m; sourceTree = "<group>"; };
+		9AE4D9A41C0BF58B0042AA25 /* MyWBLoadMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWBLoadMoreFooter.xib; sourceTree = "<group>"; };
 		9AF9972B1C056045000FCF23 /* MyWBNewfeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBNewfeatureViewController.h; sourceTree = "<group>"; };
 		9AF9972C1C056045000FCF23 /* MyWBNewfeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBNewfeatureViewController.m; sourceTree = "<group>"; };
 		9AF997301C05AAF9000FCF23 /* MyWBOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBOAuthViewController.h; sourceTree = "<group>"; };
 		9AF997311C05AAF9000FCF23 /* MyWBOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBOAuthViewController.m; sourceTree = "<group>"; };
+		9AFEEC1D1C07FA9E00D52971 /* MyWBTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBTitleButton.h; sourceTree = "<group>"; };
+		9AFEEC1E1C07FA9E00D52971 /* MyWBTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBTitleButton.m; sourceTree = "<group>"; };
+		9AFEEC201C0838FF00D52971 /* MyWBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBUser.h; sourceTree = "<group>"; };
+		9AFEEC211C0838FF00D52971 /* MyWBUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBUser.m; sourceTree = "<group>"; };
+		9AFEEC231C08394E00D52971 /* MyWBStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBStatus.h; sourceTree = "<group>"; };
+		9AFEEC241C08394E00D52971 /* MyWBStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBStatus.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -292,6 +306,10 @@
 		9AAE62601BFC27F50056C52B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9AFEEC201C0838FF00D52971 /* MyWBUser.h */,
+				9AFEEC211C0838FF00D52971 /* MyWBUser.m */,
+				9AFEEC231C08394E00D52971 /* MyWBStatus.h */,
+				9AFEEC241C08394E00D52971 /* MyWBStatus.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,6 +319,11 @@
 			children = (
 				9A5488F51BFF1935008C85D2 /* MyWBTitleMenuViewController.h */,
 				9A5488F61BFF1935008C85D2 /* MyWBTitleMenuViewController.m */,
+				9AFEEC1D1C07FA9E00D52971 /* MyWBTitleButton.h */,
+				9AFEEC1E1C07FA9E00D52971 /* MyWBTitleButton.m */,
+				9AE4D9A11C0BF5750042AA25 /* MyWBLoadMoreFooter.h */,
+				9AE4D9A21C0BF5750042AA25 /* MyWBLoadMoreFooter.m */,
+				9AE4D9A41C0BF58B0042AA25 /* MyWBLoadMoreFooter.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -587,6 +610,7 @@
 		9AAE61FE1BFC26430056C52B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = MyWB;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = MacMini;
 				TargetAttributes = {
@@ -629,6 +653,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AE4D9A51C0BF58B0042AA25 /* MyWBLoadMoreFooter.xib in Resources */,
 				9AAE62861BFC5E060056C52B /* Images.xcassets in Resources */,
 				9AAE62AC1BFC7BA20056C52B /* MyWBTest3ViewController.xib in Resources */,
 				9AAE62931BFC69C90056C52B /* MyWBTest2ViewController.xib in Resources */,
@@ -704,6 +729,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AFEEC251C08394E00D52971 /* MyWBStatus.m in Sources */,
+				9AE4D9A31C0BF5750042AA25 /* MyWBLoadMoreFooter.m in Sources */,
 				9AAE627C1BFC2AA40056C52B /* MyWBHomeViewController.m in Sources */,
 				9AAE62AB1BFC7BA20056C52B /* MyWBTest3ViewController.m in Sources */,
 				9AAE62791BFC2A850056C52B /* MyWBDiscoverViewController.m in Sources */,
@@ -721,11 +748,13 @@
 				9A261A8D1BFDBA86005BCD90 /* UIBarButtonItem+Extension.m in Sources */,
 				9AF997321C05AAF9000FCF23 /* MyWBOAuthViewController.m in Sources */,
 				9A1C0F741C07026200FA98C3 /* UIWindow+Extension.m in Sources */,
+				9AFEEC1F1C07FA9E00D52971 /* MyWBTitleButton.m in Sources */,
 				9A5488F71BFF1935008C85D2 /* MyWBTitleMenuViewController.m in Sources */,
 				9AF9972D1C056045000FCF23 /* MyWBNewfeatureViewController.m in Sources */,
 				9A1C0F6D1C06E91600FA98C3 /* MBProgressHUD+MJ.m in Sources */,
 				9AAE62921BFC69C90056C52B /* MyWBTest2ViewController.m in Sources */,
 				9A1C0F711C06FCBD00FA98C3 /* MyWBAccountTool.m in Sources */,
+				9AFEEC221C0838FF00D52971 /* MyWBUser.m in Sources */,
 				9AAE62761BFC29390056C52B /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -850,7 +879,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/zinder/Documents/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
+				GCC_PREFIX_HEADER = "/Users/macmini/Documents/zxcode/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
 				INFOPLIST_FILE = MyWeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
@@ -867,7 +896,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/zinder/Documents/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
+				GCC_PREFIX_HEADER = "/Users/macmini/Documents/zxcode/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
 				INFOPLIST_FILE = MyWeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
