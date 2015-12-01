@@ -37,6 +37,9 @@
 		9AE4D9A51C0BF58B0042AA25 /* MyWBLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE4D9A41C0BF58B0042AA25 /* MyWBLoadMoreFooter.xib */; };
 		9AF9972D1C056045000FCF23 /* MyWBNewfeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9972C1C056045000FCF23 /* MyWBNewfeatureViewController.m */; };
 		9AF997321C05AAF9000FCF23 /* MyWBOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF997311C05AAF9000FCF23 /* MyWBOAuthViewController.m */; };
+		9AF9ABFB1C0D49DA009FDA35 /* MyWBStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9ABFA1C0D49DA009FDA35 /* MyWBStatusFrame.m */; };
+		9AF9ABFE1C0D4A23009FDA35 /* MyWBStatusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9ABFD1C0D4A23009FDA35 /* MyWBStatusCell.m */; };
+		9AF9AC011C0D9307009FDA35 /* MyWBPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9AC001C0D9307009FDA35 /* MyWBPhoto.m */; };
 		9AFEEC1F1C07FA9E00D52971 /* MyWBTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEEC1E1C07FA9E00D52971 /* MyWBTitleButton.m */; };
 		9AFEEC221C0838FF00D52971 /* MyWBUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEEC211C0838FF00D52971 /* MyWBUser.m */; };
 		9AFEEC251C08394E00D52971 /* MyWBStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AFEEC241C08394E00D52971 /* MyWBStatus.m */; };
@@ -124,6 +127,12 @@
 		9AF9972C1C056045000FCF23 /* MyWBNewfeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBNewfeatureViewController.m; sourceTree = "<group>"; };
 		9AF997301C05AAF9000FCF23 /* MyWBOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBOAuthViewController.h; sourceTree = "<group>"; };
 		9AF997311C05AAF9000FCF23 /* MyWBOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBOAuthViewController.m; sourceTree = "<group>"; };
+		9AF9ABF91C0D49DA009FDA35 /* MyWBStatusFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBStatusFrame.h; sourceTree = "<group>"; };
+		9AF9ABFA1C0D49DA009FDA35 /* MyWBStatusFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBStatusFrame.m; sourceTree = "<group>"; };
+		9AF9ABFC1C0D4A23009FDA35 /* MyWBStatusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBStatusCell.h; sourceTree = "<group>"; };
+		9AF9ABFD1C0D4A23009FDA35 /* MyWBStatusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBStatusCell.m; sourceTree = "<group>"; };
+		9AF9ABFF1C0D9307009FDA35 /* MyWBPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBPhoto.h; sourceTree = "<group>"; };
+		9AF9AC001C0D9307009FDA35 /* MyWBPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBPhoto.m; sourceTree = "<group>"; };
 		9AFEEC1D1C07FA9E00D52971 /* MyWBTitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBTitleButton.h; sourceTree = "<group>"; };
 		9AFEEC1E1C07FA9E00D52971 /* MyWBTitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBTitleButton.m; sourceTree = "<group>"; };
 		9AFEEC201C0838FF00D52971 /* MyWBUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBUser.h; sourceTree = "<group>"; };
@@ -310,6 +319,10 @@
 				9AFEEC211C0838FF00D52971 /* MyWBUser.m */,
 				9AFEEC231C08394E00D52971 /* MyWBStatus.h */,
 				9AFEEC241C08394E00D52971 /* MyWBStatus.m */,
+				9AF9ABF91C0D49DA009FDA35 /* MyWBStatusFrame.h */,
+				9AF9ABFA1C0D49DA009FDA35 /* MyWBStatusFrame.m */,
+				9AF9ABFF1C0D9307009FDA35 /* MyWBPhoto.h */,
+				9AF9AC001C0D9307009FDA35 /* MyWBPhoto.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -324,6 +337,8 @@
 				9AE4D9A11C0BF5750042AA25 /* MyWBLoadMoreFooter.h */,
 				9AE4D9A21C0BF5750042AA25 /* MyWBLoadMoreFooter.m */,
 				9AE4D9A41C0BF58B0042AA25 /* MyWBLoadMoreFooter.xib */,
+				9AF9ABFC1C0D4A23009FDA35 /* MyWBStatusCell.h */,
+				9AF9ABFD1C0D4A23009FDA35 /* MyWBStatusCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -730,6 +745,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AFEEC251C08394E00D52971 /* MyWBStatus.m in Sources */,
+				9AF9AC011C0D9307009FDA35 /* MyWBPhoto.m in Sources */,
 				9AE4D9A31C0BF5750042AA25 /* MyWBLoadMoreFooter.m in Sources */,
 				9AAE627C1BFC2AA40056C52B /* MyWBHomeViewController.m in Sources */,
 				9AAE62AB1BFC7BA20056C52B /* MyWBTest3ViewController.m in Sources */,
@@ -745,8 +761,10 @@
 				9AE2A6C11C0455EB004A1A3F /* MyWBTabBar.m in Sources */,
 				9A1C0F6A1C06B64A00FA98C3 /* MyWBAccount.m in Sources */,
 				9AAE627F1BFC2AC40056C52B /* MyWBMessageCenterViewController.m in Sources */,
+				9AF9ABFE1C0D4A23009FDA35 /* MyWBStatusCell.m in Sources */,
 				9A261A8D1BFDBA86005BCD90 /* UIBarButtonItem+Extension.m in Sources */,
 				9AF997321C05AAF9000FCF23 /* MyWBOAuthViewController.m in Sources */,
+				9AF9ABFB1C0D49DA009FDA35 /* MyWBStatusFrame.m in Sources */,
 				9A1C0F741C07026200FA98C3 /* UIWindow+Extension.m in Sources */,
 				9AFEEC1F1C07FA9E00D52971 /* MyWBTitleButton.m in Sources */,
 				9A5488F71BFF1935008C85D2 /* MyWBTitleMenuViewController.m in Sources */,

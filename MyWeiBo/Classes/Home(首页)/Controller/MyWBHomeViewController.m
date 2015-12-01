@@ -19,22 +19,23 @@
 #import "MyWBStatus.h"
 #import "MyWBUser.h"
 #import "MyWBLoadMoreFooter.h"
-
+#import "MyWBStatusCell.h"
+#import "MyWBStatusFrame.h"
 
 @interface MyWBHomeViewController ()<MyDropdownMenuDelegate>
 
-@property (nonatomic, strong) NSMutableArray *statuses;
+@property (nonatomic, strong) NSMutableArray *statusFrames;
 
 @end
 
 @implementation MyWBHomeViewController
 
-- (NSMutableArray *)statuses
+- (NSMutableArray *)statusFrames
 {
-    if (!_statuses) {
-        self.statuses = [NSMutableArray array];
+    if (!_statusFrames) {
+        self.statusFrames = [NSMutableArray array];
     }
-    return _statuses;
+    return _statusFrames;
 }
 
 - (void)viewDidLoad {
@@ -141,30 +142,36 @@
     params[@"access_token"] = account.access_token;
     
     //取出最前面的微博
-    MyWBStatus *firstStatus = [self.statuses firstObject];
-    if (firstStatus) {
-        params[@"since_id"] = firstStatus.idstr;
+    MyWBStatusFrame *firstStatusF = [self.statusFrames firstObject];
+    if (firstStatusF) {
+        params[@"since_id"] = firstStatusF.status.idstr;
     }
     
     [mgr GET:@"https://api.weibo.com/2/statuses/friends_timeline.json" parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dict =  [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         
         NSArray *arr = dict[@"statuses"];
+       // MyLog(@"%@",arr);
+        // 将 "微博字典"数组 转为 "微博模型"数组
         NSMutableArray *newStatuses = [NSMutableArray array];
         for (NSDictionary *dicts in arr) {
             MyWBStatus *status =[MyWBStatus yy_modelWithDictionary:dicts];
+            MyLog(@"%@",status.pic_urls);
             [newStatuses addObject:status];
         }
+           // 将 HWStatus数组 转为 HWStatusFrame数组
+        NSArray *newFrames = [self statusFramesWithStatuses:newStatuses];
         
-        NSRange range = NSMakeRange(0, newStatuses.count);
+        NSRange range = NSMakeRange(0, newFrames.count);
         NSIndexSet *set =[NSIndexSet indexSetWithIndexesInRange:range];
-        [self.statuses insertObjects:newStatuses atIndexes:set];
+        
+        [self.statusFrames insertObjects:newFrames atIndexes:set];
         
         [self.tableView reloadData];
         
         [control endRefreshing];
         
-        [self showNewStatusCount:newStatuses.count];
+        [self showNewStatusCount:newFrames.count];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         MyLog(@"请求失败-%@",error);
@@ -232,10 +239,10 @@
     
     params[@"access_token"] = account.access_token;
     
-    MyWBStatus *lastStatus = [self.statuses lastObject];
+    MyWBStatusFrame *lastStatus = [self.statusFrames lastObject];
     
     if (lastStatus) {
-        long long maxId = lastStatus.idstr.longLongValue - 1;
+        long long maxId = lastStatus.status.idstr.longLongValue - 1;
         params[@"max_id"] = @(maxId);
     }
     
@@ -251,7 +258,9 @@
             
         }
         
-        [self.statuses addObjectsFromArray:newStatuses];
+        NSArray *newFrames = [self statusFramesWithStatuses:newStatuses];
+        
+        [self.statusFrames addObjectsFromArray:newFrames];
         
         [self.tableView reloadData];
         
@@ -269,7 +278,7 @@
 
 -(void)setupUnreadCount{
     
-    MyLog(@"setupUnreadCount");
+    //MyLog(@"setupUnreadCount");
     
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
     
@@ -287,11 +296,11 @@
         NSString *status = [dict[@"status"] description];
         
         if ([status isEqualToString:@"0"]) {
-            MyLog(@"unread------0");
+            //MyLog(@"unread------0");
             self.tabBarItem.badgeValue = nil;
             [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
         }else{
-             MyLog(@"unread------%@",status);
+            // MyLog(@"unread------%@",status);
             self.tabBarItem.badgeValue = status;
             [UIApplication sharedApplication].applicationIconBadgeNumber = status.intValue;
             
@@ -301,6 +310,19 @@
         MyLog(@"请求失败-%@", error);
 
     }];
+    
+}
+
+-(NSArray *)statusFramesWithStatuses:(NSArray *)statuses{
+    
+    NSMutableArray *frames = [NSMutableArray array];
+    
+    for (MyWBStatus *status in statuses) {
+        MyWBStatusFrame *f = [[MyWBStatusFrame alloc] init];
+        f.status = status;
+        [frames addObject:f];
+    }
+    return frames;
     
 }
 
@@ -364,46 +386,37 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.statuses.count;
+    return self.statusFrames.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    static NSString *ID =@"cell";
+    MyWBStatusCell *cell = [MyWBStatusCell cellWithTableView:tableView];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
-    }
-    
-    MyWBStatus *status = self.statuses[indexPath.row];
-    
-    MyWBUser *user =status.user;
-    
-    cell.textLabel.text = user.name;
-    
-    cell.detailTextLabel.text = status.text;
-    
-    
-    UIImage *imagePlacehoder = [UIImage imageNamed:@"avatar_default_small"];
-    
-    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:user.profile_image_url] placeholderImage:imagePlacehoder];
+    cell.statusFrame = self.statusFrames[indexPath.row];
     
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    MyWBStatusFrame *frame = self.statusFrames[indexPath.row];
+    
+    return frame.cellHeight;
+    
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     CGFloat offsetY = scrollView.contentOffset.y;
     
-    if (self.statuses.count == 0 || self.tableView.tableFooterView.isHidden == NO) {
+    if (self.statusFrames.count == 0 || self.tableView.tableFooterView.isHidden == NO) {
         return;
     }
     
     
     // 当最后一个cell完全显示在眼前时，contentOffset的y值
     CGFloat judgeOffsetY = scrollView.contentSize.height + scrollView.contentInset.bottom - scrollView.height - self.tableView.tableFooterView.height;
-    MyLog(@"%f %f",offsetY,judgeOffsetY);
+    //MyLog(@"%f %f",offsetY,judgeOffsetY);
     if (offsetY >= judgeOffsetY) {
         self.tableView.tableFooterView.hidden = NO;
     

@@ -15,21 +15,24 @@ PODS:
   - AFNetworking/UIKit (3.0.0-beta.2):
     - AFNetworking/NSURLSession
   - MBProgressHUD (0.9.1)
+  - MJExtension (3.0.7)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
-  - YYModel (0.9.3)
+  - YYModel (0.9.5)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0.0-beta.2)
   - MBProgressHUD (~> 0.9.1)
+  - MJExtension (~> 3.0.7)
   - SDWebImage (~> 3.7.3)
   - YYModel (~> 0.9.3)
 
 SPEC CHECKSUMS:
   AFNetworking: e3639f8310904c9888ddf03a2fa585633594a6e3
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  MJExtension: 290cc966f0f849b12b6391a38e296e0004ae8e5e
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
-  YYModel: 2d6c7d3a952feb38db7491c0ef62c4dbcd85f029
+  YYModel: dd2bdc9097f8a90c53512a87d55d28340ade1371
 
 COCOAPODS: 0.39.0

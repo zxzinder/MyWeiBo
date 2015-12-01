@@ -7,7 +7,18 @@
 //
 
 #import "MyWBStatus.h"
+#import "MyWBPhoto.h"
+#import "YYModel.h"
+
+
+
 
 @implementation MyWBStatus
+
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"pic_urls" : [MyWBPhoto class]};
+}
+
 
 @end
