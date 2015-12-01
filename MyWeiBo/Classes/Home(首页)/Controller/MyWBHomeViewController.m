@@ -151,12 +151,12 @@
         NSDictionary *dict =  [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         
         NSArray *arr = dict[@"statuses"];
-       // MyLog(@"%@",arr);
+        //MyLog(@"%@",arr);
         // 将 "微博字典"数组 转为 "微博模型"数组
         NSMutableArray *newStatuses = [NSMutableArray array];
         for (NSDictionary *dicts in arr) {
             MyWBStatus *status =[MyWBStatus yy_modelWithDictionary:dicts];
-            MyLog(@"%@",status.pic_urls);
+           // MyLog(@"%d",status.retweeted_status.pic_urls.count);
             [newStatuses addObject:status];
         }
            // 将 HWStatus数组 转为 HWStatusFrame数组
@@ -180,7 +180,7 @@
     }];
 }
 
--(void)showNewStatusCount:(int)count{
+-(void)showNewStatusCount:(NSInteger)count{
     
     UILabel *label = [[UILabel alloc] init];
     
@@ -195,7 +195,7 @@
         
     }else{
         
-        label.text = [NSString stringWithFormat:@"共有%d条新的微博数据",count];
+        label.text = [NSString stringWithFormat:@"共有%ld条新的微博数据",(long)count];
         
     }
     
