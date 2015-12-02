@@ -35,6 +35,8 @@
 		9AE2A6C11C0455EB004A1A3F /* MyWBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE2A6C01C0455EB004A1A3F /* MyWBTabBar.m */; };
 		9AE4D9A31C0BF5750042AA25 /* MyWBLoadMoreFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4D9A21C0BF5750042AA25 /* MyWBLoadMoreFooter.m */; };
 		9AE4D9A51C0BF58B0042AA25 /* MyWBLoadMoreFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AE4D9A41C0BF58B0042AA25 /* MyWBLoadMoreFooter.xib */; };
+		9AE5E06E1C0ECA0B00D6AC4E /* MyWBStatusToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE5E06D1C0ECA0B00D6AC4E /* MyWBStatusToolBar.m */; };
+		9AE5E0711C0EE10D00D6AC4E /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE5E0701C0EE10D00D6AC4E /* NSDate+Extension.m */; };
 		9AF9972D1C056045000FCF23 /* MyWBNewfeatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9972C1C056045000FCF23 /* MyWBNewfeatureViewController.m */; };
 		9AF997321C05AAF9000FCF23 /* MyWBOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF997311C05AAF9000FCF23 /* MyWBOAuthViewController.m */; };
 		9AF9ABFB1C0D49DA009FDA35 /* MyWBStatusFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF9ABFA1C0D49DA009FDA35 /* MyWBStatusFrame.m */; };
@@ -123,6 +125,10 @@
 		9AE4D9A11C0BF5750042AA25 /* MyWBLoadMoreFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBLoadMoreFooter.h; sourceTree = "<group>"; };
 		9AE4D9A21C0BF5750042AA25 /* MyWBLoadMoreFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBLoadMoreFooter.m; sourceTree = "<group>"; };
 		9AE4D9A41C0BF58B0042AA25 /* MyWBLoadMoreFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWBLoadMoreFooter.xib; sourceTree = "<group>"; };
+		9AE5E06C1C0ECA0B00D6AC4E /* MyWBStatusToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBStatusToolBar.h; sourceTree = "<group>"; };
+		9AE5E06D1C0ECA0B00D6AC4E /* MyWBStatusToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBStatusToolBar.m; sourceTree = "<group>"; };
+		9AE5E06F1C0EE10D00D6AC4E /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		9AE5E0701C0EE10D00D6AC4E /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		9AF9972B1C056045000FCF23 /* MyWBNewfeatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBNewfeatureViewController.h; sourceTree = "<group>"; };
 		9AF9972C1C056045000FCF23 /* MyWBNewfeatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBNewfeatureViewController.m; sourceTree = "<group>"; };
 		9AF997301C05AAF9000FCF23 /* MyWBOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBOAuthViewController.h; sourceTree = "<group>"; };
@@ -339,6 +345,8 @@
 				9AE4D9A41C0BF58B0042AA25 /* MyWBLoadMoreFooter.xib */,
 				9AF9ABFC1C0D4A23009FDA35 /* MyWBStatusCell.h */,
 				9AF9ABFD1C0D4A23009FDA35 /* MyWBStatusCell.m */,
+				9AE5E06C1C0ECA0B00D6AC4E /* MyWBStatusToolBar.h */,
+				9AE5E06D1C0ECA0B00D6AC4E /* MyWBStatusToolBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -366,6 +374,8 @@
 				9A261A8C1BFDBA86005BCD90 /* UIBarButtonItem+Extension.m */,
 				9A1C0F721C07026200FA98C3 /* UIWindow+Extension.h */,
 				9A1C0F731C07026200FA98C3 /* UIWindow+Extension.m */,
+				9AE5E06F1C0EE10D00D6AC4E /* NSDate+Extension.h */,
+				9AE5E0701C0EE10D00D6AC4E /* NSDate+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -751,6 +761,7 @@
 				9AAE62AB1BFC7BA20056C52B /* MyWBTest3ViewController.m in Sources */,
 				9AAE62791BFC2A850056C52B /* MyWBDiscoverViewController.m in Sources */,
 				9AAE62A21BFC785C0056C52B /* UIView+Extension.m in Sources */,
+				9AE5E06E1C0ECA0B00D6AC4E /* MyWBStatusToolBar.m in Sources */,
 				9AAE62891BFC672C0056C52B /* MyWBTabBarViewController.m in Sources */,
 				9AAE628D1BFC690B0056C52B /* MyWBTest1ViewController.m in Sources */,
 				9AAE62821BFC2ADB0056C52B /* MyWBProfileViewController.m in Sources */,
@@ -763,6 +774,7 @@
 				9AAE627F1BFC2AC40056C52B /* MyWBMessageCenterViewController.m in Sources */,
 				9AF9ABFE1C0D4A23009FDA35 /* MyWBStatusCell.m in Sources */,
 				9A261A8D1BFDBA86005BCD90 /* UIBarButtonItem+Extension.m in Sources */,
+				9AE5E0711C0EE10D00D6AC4E /* NSDate+Extension.m in Sources */,
 				9AF997321C05AAF9000FCF23 /* MyWBOAuthViewController.m in Sources */,
 				9AF9ABFB1C0D49DA009FDA35 /* MyWBStatusFrame.m in Sources */,
 				9A1C0F741C07026200FA98C3 /* UIWindow+Extension.m in Sources */,
@@ -897,7 +909,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/zinder/Documents/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
+				GCC_PREFIX_HEADER = "/Users/macmini/Documents/zxcode/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
 				INFOPLIST_FILE = MyWeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
@@ -914,7 +926,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/zinder/Documents/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
+				GCC_PREFIX_HEADER = "/Users/macmini/Documents/zxcode/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
 				INFOPLIST_FILE = MyWeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";

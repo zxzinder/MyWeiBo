@@ -12,7 +12,7 @@
 #import "MyWBUser.h"
 #import "UIImageView+WebCache.h"
 #import "MyWBPhoto.h"
-
+#import "MyWBStatusToolBar.h"
 
 @interface MyWBStatusCell()
 
@@ -42,6 +42,11 @@
 
 @property (nonatomic,weak)UIImageView *retweetPhotoView;
 
+/**
+ *  工具栏
+ */
+
+@property (nonatomic, weak)MyWBStatusToolBar *toolbar;
 @end
 
 @implementation MyWBStatusCell
@@ -62,19 +67,25 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        self.backgroundColor = [UIColor clearColor];
+        
         [self setupOriginal];
         
         [self setupRetweet];
         
+        [self setupToolbar];
+        
     }
     return self;
 }
-
 -(void)setupRetweet{
     
     /** 转发微博整体 */
     UIView *retweetView = [[UIView alloc] init];
-    retweetView.backgroundColor = MyWBColor(240, 240, 240);
+    retweetView.backgroundColor = MyWBColor(247, 247, 247);
     [self.contentView addSubview:retweetView];
     self.retweetView = retweetView;
     
@@ -89,7 +100,6 @@
     UIImageView *retweetPhotoView = [[UIImageView alloc] init];
     [retweetView addSubview:retweetPhotoView];
     self.retweetPhotoView = retweetPhotoView;
-    
 }
 
 -(void)setupOriginal{
@@ -123,6 +133,7 @@
     UILabel *timeLabel = [[UILabel alloc] init];
     [originalView addSubview:timeLabel];
     timeLabel.font = StatusCellTimeFont;
+    timeLabel.textColor = [UIColor orangeColor];
     self.timeLabel = timeLabel;
     
     /** 来源 */
@@ -138,6 +149,16 @@
     [originalView addSubview:contentLabel];
     self.contentLabel = contentLabel;
     
+    
+}
+
+-(void)setupToolbar{
+    
+    MyWBStatusToolBar *toolbar = [MyWBStatusToolBar toolbar];
+    
+    [self.contentView addSubview:toolbar];
+    
+    self.toolbar = toolbar;
     
 }
 
@@ -239,7 +260,11 @@
         
     }
     
-    
+    /**
+     *   工具条
+     */
+    self.toolbar.frame = self.statusFrame.toolbarF;
+    self.toolbar.status = status;
 }
 
 - (void)awakeFromNib {
