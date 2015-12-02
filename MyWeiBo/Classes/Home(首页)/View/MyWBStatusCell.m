@@ -13,6 +13,7 @@
 #import "UIImageView+WebCache.h"
 #import "MyWBPhoto.h"
 #import "MyWBStatusToolBar.h"
+#import "MyWBStatusPhotosView.h"
 
 @interface MyWBStatusCell()
 
@@ -24,7 +25,7 @@
 /** 会员图标 */
 @property (nonatomic, weak) UIImageView *vipView;
 /** 配图 */
-@property (nonatomic, weak) UIImageView *photoView;
+@property (nonatomic, weak) MyWBStatusPhotosView *photosView;
 /** 昵称 */
 @property (nonatomic, weak) UILabel *nameLabel;
 /** 时间 */
@@ -40,7 +41,7 @@
 
 @property (nonatomic,weak)UILabel *retweetContentLabel;
 
-@property (nonatomic,weak)UIImageView *retweetPhotoView;
+@property (nonatomic,weak)MyWBStatusPhotosView *retweetPhotosView;
 
 /**
  *  工具栏
@@ -97,9 +98,9 @@
     self.retweetContentLabel = retweetContentLabel;
     
     /** 转发微博配图 */
-    UIImageView *retweetPhotoView = [[UIImageView alloc] init];
-    [retweetView addSubview:retweetPhotoView];
-    self.retweetPhotoView = retweetPhotoView;
+    MyWBStatusPhotosView *retweetPhotosView = [[MyWBStatusPhotosView alloc] init];
+    [retweetView addSubview:retweetPhotosView];
+    self.retweetPhotosView = retweetPhotosView;
 }
 
 -(void)setupOriginal{
@@ -119,9 +120,9 @@
     self.vipView = vipView;
     
     /** 配图 */
-    UIImageView *photoView = [[UIImageView alloc] init];
-    [originalView addSubview:photoView];
-    self.photoView = photoView;
+    MyWBStatusPhotosView *photosView = [[MyWBStatusPhotosView alloc] init];
+    [originalView addSubview:photosView];
+    self.photosView = photosView;
     
     /** 昵称 */
     UILabel *nameLabel = [[UILabel alloc] init];
@@ -195,14 +196,12 @@
     /** 配图 */
     
     if (status.pic_urls.count) {
-        self.photoView.frame = statusFrame.photoViewF;
-        MyWBPhoto *photo = [status.pic_urls firstObject];
-        [self.photoView sd_setImageWithURL:[NSURL URLWithString:photo.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
-        
-        self.photoView.hidden = NO;
+        self.photosView.frame = statusFrame.photosViewF;
+        self.photosView.photos = status.pic_urls;
+        self.photosView.hidden = NO;
     }else{
         
-        self.photoView.hidden = YES;
+        self.photosView.hidden = YES;
         
     }
     
@@ -240,16 +239,15 @@
         
         if (retweeted_status.pic_urls.count >0 ) {
         
-            MyWBPhoto *retweetedPhoto = [retweeted_status.pic_urls firstObject];
+           // MyWBPhoto *retweetedPhoto = [retweeted_status.pic_urls firstObject];
            // MyLog(@"图片数：%lu  图片urls%@  名字%@  photo%@",(unsigned long)retweeted_status.pic_urls.count,retweeted_status.pic_urls,user.name,retweetedPhoto.thumbnail_pic);
-            [self.retweetPhotoView sd_setImageWithURL:[NSURL URLWithString:retweetedPhoto.thumbnail_pic] placeholderImage:[UIImage imageNamed:@"timeline_image_placeholder"]];
-            
-            self.retweetPhotoView.frame = statusFrame.retweetPhotoViewF;
-
-            self.retweetPhotoView.hidden = NO;
+           
+            self.retweetPhotosView.frame = statusFrame.retweetPhotosViewF;
+            self.retweetPhotosView.photos = retweeted_status.pic_urls;
+            self.retweetPhotosView.hidden = NO;
         }else{
             
-            self.retweetPhotoView.hidden = YES;
+            self.retweetPhotosView.hidden = YES;
             
         }
         

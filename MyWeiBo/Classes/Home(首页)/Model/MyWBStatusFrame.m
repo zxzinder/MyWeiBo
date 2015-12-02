@@ -9,6 +9,7 @@
 #import "MyWBStatusFrame.h"
 #import "MyWBUser.h"
 #import "MyWBStatus.h"
+#import "MyWBStatusPhotosView.h"
 // cell的边框宽度
 #define StatusCellBorderW 10
 #define StatusLittleBorder 4
@@ -90,11 +91,13 @@
     if (status.pic_urls.count) {
         CGFloat photoX = contentX;
         CGFloat photoY = CGRectGetMaxY(self.contentLabelF) +StatusLittleBorder;
-        CGFloat photoWH = 80;
+        //CGFloat photoWH = 80;
         
-        self.photoViewF = CGRectMake(photoX, photoY, photoWH, photoWH);
+        CGSize photoSize = [MyWBStatusPhotosView sizeWithCount:status.pic_urls.count];
         
-        originalH = CGRectGetMaxY(self.photoViewF) + StatusCellBorderW;
+        self.photosViewF = (CGRect){{photoX,photoY}, photoSize};
+        
+        originalH = CGRectGetMaxY(self.photosViewF) + StatusCellBorderW;
         
     }else{
         
@@ -131,13 +134,15 @@
         
         CGFloat retweetH = 0 ;
         if (retweeted_status.pic_urls.count) {
-            CGFloat retweetPhotoWH = 80;
+            //CGFloat retweetPhotoWH = 80;
             CGFloat retweetPhotoX = retweetContentX;
             CGFloat retweetPhotoY = CGRectGetMaxY(self.retweetContentLabelF) + StatusLittleBorder;
             
-            self.retweetPhotoViewF = CGRectMake(retweetPhotoX, retweetPhotoY, retweetPhotoWH, retweetPhotoWH);
+            CGSize retweetPhotoSize = [MyWBStatusPhotosView sizeWithCount:retweeted_status.pic_urls.count];
             
-            retweetH = CGRectGetMaxY(self.retweetPhotoViewF) + StatusCellBorderW;
+            self.retweetPhotosViewF = (CGRect){{retweetPhotoX,retweetPhotoY},retweetPhotoSize};
+            
+            retweetH = CGRectGetMaxY(self.retweetPhotosViewF) + StatusCellBorderW;
         }else{
             
             retweetH = CGRectGetMaxY(self.retweetContentLabelF) + StatusCellBorderW;
