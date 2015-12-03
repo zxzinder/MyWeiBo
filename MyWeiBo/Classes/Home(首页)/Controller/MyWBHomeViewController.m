@@ -57,6 +57,15 @@
     
 }
 
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:animated];
+    
+    [self setupDownRefresh];
+    
+}
+
 -(void)setupUserInfo{
     
     MyWBAccount *account = [MyWBAccountTool account];

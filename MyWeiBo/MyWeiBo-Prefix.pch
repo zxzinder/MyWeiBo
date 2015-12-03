@@ -20,6 +20,9 @@
 #import "NSDate+Extension.h"
 #import "NSString+Extension.h"
 
+// 通知中心
+#define NotificationCenter [NSNotificationCenter defaultCenter]
+
 #ifdef DEBUG // 处于开发阶段
 #define MyLog(...) NSLog(__VA_ARGS__)
 #else // 处于发布阶段

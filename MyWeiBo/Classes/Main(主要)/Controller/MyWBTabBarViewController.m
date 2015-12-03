@@ -13,7 +13,7 @@
 #import "MyWBProfileViewController.h"
 #import "MyWBNavigationController.h"
 #import "MyWBTabBar.h"
-
+#import "MyWBComposeViewController.h"
 
 @interface MyWBTabBarViewController ()<MyWBTabBarDelegate>
 
@@ -91,11 +91,12 @@
 
 -(void)tabBarDidClickPlusButton:(MyWBTabBar *)tabBar{
     
-    UIViewController *vc = [[UIViewController alloc ] init];
     
-    vc.view.backgroundColor = [UIColor redColor];
+    MyWBComposeViewController *vc = [[MyWBComposeViewController alloc ] init];
     
-    [self presentViewController:vc
+    MyWBNavigationController *nav = [[MyWBNavigationController alloc] initWithRootViewController:vc];
+    
+    [self presentViewController:nav
                        animated:YES completion:nil];
     
 }

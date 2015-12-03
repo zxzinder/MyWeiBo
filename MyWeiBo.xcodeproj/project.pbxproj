@@ -51,6 +51,8 @@
 		CF5F63721C0F2EC700E2CA1D /* MyWBStatusSingleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5F63711C0F2EC700E2CA1D /* MyWBStatusSingleImageView.m */; };
 		CF5F63751C0F321500E2CA1D /* MyWBStatusPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5F63741C0F321500E2CA1D /* MyWBStatusPhotosView.m */; };
 		CF5F63771C0F3D8400E2CA1D /* fakeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF5F63761C0F3D8400E2CA1D /* fakeStatus.plist */; };
+		CFA880981C107F5B0001AE07 /* MyWBComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA880971C107F5B0001AE07 /* MyWBComposeViewController.m */; };
+		CFA8809B1C107FD60001AE07 /* MyWBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA8809A1C107FD60001AE07 /* MyWBTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,6 +161,10 @@
 		CF5F63731C0F321500E2CA1D /* MyWBStatusPhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBStatusPhotosView.h; sourceTree = "<group>"; };
 		CF5F63741C0F321500E2CA1D /* MyWBStatusPhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBStatusPhotosView.m; sourceTree = "<group>"; };
 		CF5F63761C0F3D8400E2CA1D /* fakeStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fakeStatus.plist; sourceTree = "<group>"; };
+		CFA880961C107F5B0001AE07 /* MyWBComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBComposeViewController.h; sourceTree = "<group>"; };
+		CFA880971C107F5B0001AE07 /* MyWBComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBComposeViewController.m; sourceTree = "<group>"; };
+		CFA880991C107FD60001AE07 /* MyWBTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBTextView.h; sourceTree = "<group>"; };
+		CFA8809A1C107FD60001AE07 /* MyWBTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +275,7 @@
 		9AAE62591BFC27F50056C52B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CFA880941C107F3E0001AE07 /* Compose(发微博) */,
 				9AF9972E1C05AACD000FCF23 /* OAuth(授权) */,
 				9AF997271C056014000FCF23 /* Newfeature(新特性) */,
 				9AAE625A1BFC27F50056C52B /* Discover(发现) */,
@@ -439,6 +446,8 @@
 				9A5488F01BFF1404008C85D2 /* MyDropdownMenu.m */,
 				9AE2A6BF1C0455EB004A1A3F /* MyWBTabBar.h */,
 				9AE2A6C01C0455EB004A1A3F /* MyWBTabBar.m */,
+				CFA880991C107FD60001AE07 /* MyWBTextView.h */,
+				CFA8809A1C107FD60001AE07 /* MyWBTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -582,6 +591,23 @@
 				53F0240942FE93AE3C13577C /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CFA880941C107F3E0001AE07 /* Compose(发微博) */ = {
+			isa = PBXGroup;
+			children = (
+				CFA880951C107F3E0001AE07 /* Controller */,
+			);
+			path = "Compose(发微博)";
+			sourceTree = "<group>";
+		};
+		CFA880951C107F3E0001AE07 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CFA880961C107F5B0001AE07 /* MyWBComposeViewController.h */,
+				CFA880971C107F5B0001AE07 /* MyWBComposeViewController.m */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		EAE66BF084AF37CCA11574D9 /* Pods */ = {
@@ -791,8 +817,10 @@
 				9AAE628D1BFC690B0056C52B /* MyWBTest1ViewController.m in Sources */,
 				9AAE62821BFC2ADB0056C52B /* MyWBProfileViewController.m in Sources */,
 				9A5488EE1BFF03F2008C85D2 /* MySearchBar.m in Sources */,
+				CFA880981C107F5B0001AE07 /* MyWBComposeViewController.m in Sources */,
 				9AAE620B1BFC26430056C52B /* main.m in Sources */,
 				9A5488F11BFF1404008C85D2 /* MyDropdownMenu.m in Sources */,
+				CFA8809B1C107FD60001AE07 /* MyWBTextView.m in Sources */,
 				9AAE62961BFC6D280056C52B /* MyWBNavigationController.m in Sources */,
 				9AE2A6C11C0455EB004A1A3F /* MyWBTabBar.m in Sources */,
 				CF5F63721C0F2EC700E2CA1D /* MyWBStatusSingleImageView.m in Sources */,
@@ -937,7 +965,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/macmini/Documents/zxcode/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
+				GCC_PREFIX_HEADER = "/Users/zinder/Documents/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
 				INFOPLIST_FILE = MyWeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
@@ -954,7 +982,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/macmini/Documents/zxcode/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
+				GCC_PREFIX_HEADER = "/Users/zinder/Documents/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
 				INFOPLIST_FILE = MyWeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
