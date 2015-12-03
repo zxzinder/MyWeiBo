@@ -41,6 +41,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.backgroundColor = MyWBColor(211, 211, 211);
+    
     [self setupNav];
     
     [self setupUserInfo];
@@ -190,7 +192,7 @@
         NSMutableArray *newStatuses = [NSMutableArray array];
         for (NSDictionary *dicts in arr) {
             MyWBStatus *status =[MyWBStatus yy_modelWithDictionary:dicts];
-           // MyLog(@"%d",status.retweeted_status.pic_urls.count);
+           // MyLog(@"verified_type ---- :%d",status.user.verified_type);
             [newStatuses addObject:status];
         }
            // 将 HWStatus数组 转为 HWStatusFrame数组

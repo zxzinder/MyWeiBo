@@ -14,6 +14,7 @@
 #import "MyWBPhoto.h"
 #import "MyWBStatusToolBar.h"
 #import "MyWBStatusPhotosView.h"
+#import "MyWBIconImageView.h"
 
 @interface MyWBStatusCell()
 
@@ -21,7 +22,7 @@
 /** 原创微博整体 */
 @property (nonatomic, weak) UIView *originalView;
 /** 头像 */
-@property (nonatomic, weak) UIImageView *iconView;
+@property (nonatomic, weak) MyWBIconImageView *iconView;
 /** 会员图标 */
 @property (nonatomic, weak) UIImageView *vipView;
 /** 配图 */
@@ -105,11 +106,12 @@
 
 -(void)setupOriginal{
     UIView *originalView = [[UIView alloc] init];
+    originalView.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:originalView];
     self.originalView = originalView;
     
     /** 头像 */
-    UIImageView *iconView = [[UIImageView alloc] init];
+    MyWBIconImageView *iconView = [[MyWBIconImageView alloc] init];
     [originalView addSubview:iconView];
     self.iconView = iconView;
     
@@ -172,7 +174,7 @@
     self.originalView.frame = statusFrame.originalViewF;
     
     self.iconView.frame = statusFrame.iconViewF;
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:user.avatar_large] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
+    self.iconView.user = user;
     
     /** 会员图标 */
     

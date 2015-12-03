@@ -18,8 +18,13 @@
 #define StatusCellContentFont [UIFont systemFontOfSize:14]
 // 被转发微博的正文字体
 #define StatusCellRetweetContentFont [UIFont systemFontOfSize:13]
+// cell之间的间距
+#define StatusCellMargin 10
 
+// cell的边框宽度
+#define StatusCellBorderW 10
 
+#define StatusLittleBorder 4
 
 @class MyWBStatus;
 
