@@ -15,6 +15,8 @@
 		9A5488EE1BFF03F2008C85D2 /* MySearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5488ED1BFF03F1008C85D2 /* MySearchBar.m */; };
 		9A5488F11BFF1404008C85D2 /* MyDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5488F01BFF1404008C85D2 /* MyDropdownMenu.m */; };
 		9A5488F71BFF1935008C85D2 /* MyWBTitleMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A5488F61BFF1935008C85D2 /* MyWBTitleMenuViewController.m */; };
+		9A98F8B31C11882C00A0F32F /* MyWBComposeToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A98F8B21C11882C00A0F32F /* MyWBComposeToolbar.m */; };
+		9A98F8B61C118B8700A0F32F /* MyWBComposePhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A98F8B51C118B8700A0F32F /* MyWBComposePhotosView.m */; };
 		9AAE620B1BFC26430056C52B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE620A1BFC26430056C52B /* main.m */; };
 		9AAE62241BFC26440056C52B /* MyWeiBoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE62231BFC26440056C52B /* MyWeiBoTests.m */; };
 		9AAE622F1BFC26440056C52B /* MyWeiBoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAE622E1BFC26440056C52B /* MyWeiBoUITests.m */; };
@@ -92,6 +94,10 @@
 		9A5488F01BFF1404008C85D2 /* MyDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDropdownMenu.m; sourceTree = "<group>"; };
 		9A5488F51BFF1935008C85D2 /* MyWBTitleMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBTitleMenuViewController.h; sourceTree = "<group>"; };
 		9A5488F61BFF1935008C85D2 /* MyWBTitleMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBTitleMenuViewController.m; sourceTree = "<group>"; };
+		9A98F8B11C11882C00A0F32F /* MyWBComposeToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBComposeToolbar.h; sourceTree = "<group>"; };
+		9A98F8B21C11882C00A0F32F /* MyWBComposeToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBComposeToolbar.m; sourceTree = "<group>"; };
+		9A98F8B41C118B8700A0F32F /* MyWBComposePhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBComposePhotosView.h; sourceTree = "<group>"; };
+		9A98F8B51C118B8700A0F32F /* MyWBComposePhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBComposePhotosView.m; sourceTree = "<group>"; };
 		9AAE62061BFC26430056C52B /* MyWeiBo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeiBo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AAE620A1BFC26430056C52B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9AAE621A1BFC26440056C52B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -209,6 +215,17 @@
 				9A1C0F701C06FCBD00FA98C3 /* MyWBAccountTool.m */,
 			);
 			path = Tool;
+			sourceTree = "<group>";
+		};
+		9A98F8B01C11880B00A0F32F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9A98F8B11C11882C00A0F32F /* MyWBComposeToolbar.h */,
+				9A98F8B21C11882C00A0F32F /* MyWBComposeToolbar.m */,
+				9A98F8B41C118B8700A0F32F /* MyWBComposePhotosView.h */,
+				9A98F8B51C118B8700A0F32F /* MyWBComposePhotosView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9AAE61FD1BFC26430056C52B = {
@@ -596,6 +613,7 @@
 		CFA880941C107F3E0001AE07 /* Compose(发微博) */ = {
 			isa = PBXGroup;
 			children = (
+				9A98F8B01C11880B00A0F32F /* View */,
 				CFA880951C107F3E0001AE07 /* Controller */,
 			);
 			path = "Compose(发微博)";
@@ -836,12 +854,14 @@
 				9A1C0F741C07026200FA98C3 /* UIWindow+Extension.m in Sources */,
 				9AFEEC1F1C07FA9E00D52971 /* MyWBTitleButton.m in Sources */,
 				9A5488F71BFF1935008C85D2 /* MyWBTitleMenuViewController.m in Sources */,
+				9A98F8B31C11882C00A0F32F /* MyWBComposeToolbar.m in Sources */,
 				9AF9972D1C056045000FCF23 /* MyWBNewfeatureViewController.m in Sources */,
 				9A1C0F6D1C06E91600FA98C3 /* MBProgressHUD+MJ.m in Sources */,
 				9AAE62921BFC69C90056C52B /* MyWBTest2ViewController.m in Sources */,
 				9A1C0F711C06FCBD00FA98C3 /* MyWBAccountTool.m in Sources */,
 				9AFEEC221C0838FF00D52971 /* MyWBUser.m in Sources */,
 				9AAE62761BFC29390056C52B /* AppDelegate.m in Sources */,
+				9A98F8B61C118B8700A0F32F /* MyWBComposePhotosView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,7 +985,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/zinder/Documents/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
+				GCC_PREFIX_HEADER = "/Users/macmini/Documents/zxcode/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
 				INFOPLIST_FILE = MyWeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";
@@ -982,7 +1002,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "/Users/zinder/Documents/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
+				GCC_PREFIX_HEADER = "/Users/macmini/Documents/zxcode/MyWeiBo/MyWeiBo/MyWeiBo-Prefix.pch";
 				INFOPLIST_FILE = MyWeiBo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				New_Setting = "";

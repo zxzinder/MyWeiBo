@@ -12,11 +12,14 @@
 #import "MyWBTextView.h"
 #import "MBProgressHUD+MJ.h"
 #import "AFNetworking.h"
+#import "MyWBComposeToolbar.h"
+#import "MyWBComposePhotosView.h"
 
-@interface MyWBComposeViewController ()
+@interface MyWBComposeViewController ()<UITextViewDelegate,MyWBComposeToolbarDelegate>
 
 @property (nonatomic,weak)MyWBTextView *textView;
-
+@property (nonatomic, weak)MyWBComposeToolbar *toolbar;
+@property (nonatomic, weak)UIButton *doneBtn;
 @end
 
 @implementation MyWBComposeViewController
@@ -28,7 +31,15 @@
     
     [self setupNav];
     [self setupTextView];
+    [self setupToolbar];
     // Do any additional setup after loading the view.
+}
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [self.textView becomeFirstResponder];
+    
 }
 
 -(void)dealloc{
@@ -90,7 +101,7 @@
     self.textView = textView;
     
     [NotificationCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:textView];
-    
+    [NotificationCenter addObserver:self selector:@selector(keyboardWiiChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
 }
 /**
  UITextField:
@@ -110,6 +121,18 @@
  1> 设置代理
  2> 通知:UITextViewTextDidChangeNotification
  */
+
+-(void)setupToolbar{
+    
+    MyWBComposeToolbar *toolbar = [[MyWBComposeToolbar alloc ]init];
+    toolbar.width = self.view.width;
+    toolbar.height = 44;
+    toolbar.y = self.view.height - toolbar.height;
+    toolbar.delegate = self;
+    [self.view addSubview:toolbar];
+    self.toolbar = toolbar;
+}
+
 -(void)cancel{
     
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -140,10 +163,100 @@
     
 }
 
+#pragma mark  - 监听方法
+
+-(void)keyboardWiiChangeFrame:(NSNotification *)notification{
+    
+    NSDictionary *userInfo = notification.userInfo;
+    
+    double duration = [userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+    
+    CGRect keyboardF = [userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    
+    
+    [UIView animateWithDuration:duration animations:^{
+        if (keyboardF.origin.y > self.view.height) {
+            self.toolbar.y = self.view.height - self.toolbar.height;
+        }else{
+            
+            self.toolbar.y = keyboardF.origin.y - self.toolbar.height;
+            
+        }
+    }];
+    
+    
+    UIButton *doneBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    doneBtn.frame = CGRectMake(keyboardF.origin.x + 10, keyboardF.size.width - 20, 20, 10);
+    [doneBtn setTitle:@"done" forState: UIControlStateNormal];
+    [doneBtn addTarget:self action:@selector(hideDoneBtn) forControlEvents:UIControlEventTouchUpInside];
+    //doneBtn.backgroundColor = [UIColor redColor];
+    [self.view addSubview:doneBtn];
+    self.doneBtn = doneBtn;
+    
+}
+
 -(void)textDidChange{
     
     self.navigationItem.rightBarButtonItem.enabled = self.textView.hasText;
     
 }
+-(void)hideDoneBtn{
+    
+    [self.doneBtn removeFromSuperview];
+    [self resignFirstResponder];
+    
+}
+#pragma mark - UITextViewDelegate
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    
+    [self.view endEditing:YES];
+    
+}
+
+#pragma mark - MyWBComposeToolbarDelegate
+
+-(void)composeToolbar:(MyWBComposeToolbar *)toolbar didClickButton:(ComposeToolbarButtonType)buttonType{
+    
+    switch (buttonType) {
+        case ComposeToolbarButtonTypeCamera: // 拍照
+           MyLog(@"--- 拍照");
+            break;
+            
+        case ComposeToolbarButtonTypePicture: // 相册
+              MyLog(@"---相册");
+            break;
+            
+        case ComposeToolbarButtonTypeMention: // @
+            MyLog(@"--- @");
+            break;
+            
+        case ComposeToolbarButtonTypeTrend: // #
+            MyLog(@"--- #");
+            break;
+            
+        case ComposeToolbarButtonTypeEmotion: // 表情\键盘
+            MyLog(@"--- 表情");
+            break;
+    }
+    
+}
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

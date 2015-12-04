@@ -8,6 +8,12 @@
 
 #import "MyWBTextView.h"
 
+@interface MyWBTextView()
+
+@property (nonatomic, weak)UIButton *doneBtn;
+
+@end
+
 @implementation MyWBTextView
 
 /*
@@ -24,9 +30,24 @@
     
     if (self) {
         [NotificationCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:self];
+//        
+//        [NotificationCenter addObserver:self selector:@selector(doneBtn:) name:UIKeyboardDidShowNotification object:nil];
+        
     }
     
     return self;
+    
+}
+
+-(void)doneBtn:(NSNotification *)notification{
+    
+    UIButton *doneBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    doneBtn.frame = CGRectMake(0, 128, 170, 135);
+    [doneBtn setTitle:@"done" forState: UIControlStateNormal];
+    [doneBtn addTarget:self action:@selector(hideDoneBtn) forControlEvents:UIControlEventTouchUpInside];
+    doneBtn.backgroundColor = [UIColor redColor];
+    [self addSubview:doneBtn];
+    self.doneBtn = doneBtn;
     
 }
 
@@ -41,6 +62,13 @@
     _placeholder = placeholder;
     
     [self setNeedsDisplay];
+    
+}
+
+-(void)hideDoneBtn{
+    
+    [self.doneBtn removeFromSuperview];
+    [self resignFirstResponder];
     
 }
 
@@ -78,7 +106,12 @@
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
     attrs[NSFontAttributeName] = self.font;
     attrs[NSForegroundColorAttributeName] = self.placeholderColor ? self.placeholderColor:[UIColor grayColor];
-    [self.placeholder drawAtPoint:CGPointMake(5, 8) withAttributes:attrs];
+    CGFloat x = 5;
+    CGFloat w = rect.size.width - 2 * x;
+    CGFloat y = 8;
+    CGFloat h = rect.size.height - 2 * y;
+    CGRect placeholderRect = CGRectMake(x, y, w, h);
+    [self.placeholder drawInRect:placeholderRect withAttributes:attrs];
 }
 
 @end

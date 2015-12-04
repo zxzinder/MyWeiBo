@@ -219,7 +219,7 @@
         [self showNewStatusCount:newFrames.count];
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        MyLog(@"请求失败-%@",error);
+        MyLog(@"refreshStateChange -- 请求失败-%@",error);
         
         [control endRefreshing];
     }];
