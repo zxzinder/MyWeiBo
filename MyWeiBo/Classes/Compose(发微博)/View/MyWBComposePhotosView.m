@@ -42,7 +42,7 @@
     CGFloat imageMargin = 10;
     
     for (int i = 0; i<count; i++) {
-        UIImageView *photoView = [[UIImageView alloc ] init];
+        UIImageView *photoView = self.subviews[i];
         
         int col = i % maxCol;
         photoView.x = col *(imageWH + imageMargin);

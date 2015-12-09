@@ -15,10 +15,13 @@
 #import "MyWBComposeToolbar.h"
 #import "MyWBComposePhotosView.h"
 
-@interface MyWBComposeViewController ()<UITextViewDelegate,MyWBComposeToolbarDelegate>
+@interface MyWBComposeViewController ()<UITextViewDelegate,MyWBComposeToolbarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 @property (nonatomic,weak)MyWBTextView *textView;
 @property (nonatomic, weak)MyWBComposeToolbar *toolbar;
+
+@property (nonatomic, weak)MyWBComposePhotosView *photosView;
+
 @property (nonatomic, weak)UIButton *doneBtn;
 @end
 
@@ -32,26 +35,33 @@
     [self setupNav];
     [self setupTextView];
     [self setupToolbar];
+    [self setupPhotosView];
     // Do any additional setup after loading the view.
 }
--(void)viewWillAppear:(BOOL)animated{
+//-(void)viewWillAppear:(BOOL)animated{
+//    
+//    [super viewWillAppear:animated];
+//    
+//    [self.textView becomeFirstResponder];
+//    
+//}
+-(void)viewDidAppear:(BOOL)animated{
     
-    [super viewWillAppear:animated];
+    [super viewDidAppear:animated];
     
     [self.textView becomeFirstResponder];
     
 }
-
 -(void)dealloc{
     
     [NotificationCenter removeObserver:self];
     
 }
-
+#pragma mark - 初始化
 -(void)setupNav{
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancel)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStyleDone target:self action:@selector(sendMessage)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发送" style:UIBarButtonItemStyleDone target:self action:@selector(send)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
     
     NSString *name =[MyWBAccountTool account].name;
@@ -92,10 +102,12 @@
 -(void)setupTextView{
     
     MyWBTextView *textView = [[MyWBTextView alloc] init];
+    // 垂直方向上永远可以拖拽（有弹簧效果）
+    textView.alwaysBounceVertical = YES;
     textView.frame = self.view.bounds;
     textView.font = [UIFont systemFontOfSize:15];
     textView.placeholder = @"分享新鲜事...";
-    
+    textView.delegate = self;
     [self.view addSubview:textView];
     
     self.textView = textView;
@@ -133,13 +145,42 @@
     self.toolbar = toolbar;
 }
 
+-(void)setupPhotosView{
+    
+    MyWBComposePhotosView *photosView = [[MyWBComposePhotosView alloc] init];
+    photosView.y = 100;
+   
+    photosView.width = self.view.width;
+    photosView.height = self.view.height;
+    
+    [self.textView addSubview:photosView];
+    self.photosView = photosView;
+    
+}
+
+
+
+#pragma mark  - 监听方法
 -(void)cancel{
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
--(void)sendMessage{
+-(void)send{
+    
+    if (self.photosView.photos.count) {
+        [self sendWithImage];
+    }else{
+        
+        [self sendWithoutImage];
+        
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
+-(void)sendWithoutImage{
     
     AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
     
@@ -159,11 +200,30 @@
         [MBProgressHUD showError:@"发送失败 "];
     }];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
-#pragma mark  - 监听方法
+-(void)sendWithImage{
+    
+    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"access_token"] = [MyWBAccountTool account].access_token;
+    params[@"status"] = self.textView.text;
+    
+    [mgr POST:@"https://upload.api.weibo.com/2/statuses/upload.json" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        UIImage *image = [self.photosView.photos firstObject];
+        NSData *data = UIImageJPEGRepresentation(image, 1.0);
+        [formData appendPartWithFileData:data name:@"pic" fileName:@"test.jpg" mimeType:@"image/jpeg"];
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        //[MBProgressHUD showSuccess:@"发送成功"];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+         MyLog(@"sendWithImage --- %@",error);
+        [MBProgressHUD showError:@"发送失败"];
+    }];
+    
+  //  [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 -(void)keyboardWiiChangeFrame:(NSNotification *)notification{
     
@@ -185,13 +245,13 @@
     }];
     
     
-    UIButton *doneBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    doneBtn.frame = CGRectMake(keyboardF.origin.x + 10, keyboardF.size.width - 20, 20, 10);
-    [doneBtn setTitle:@"done" forState: UIControlStateNormal];
-    [doneBtn addTarget:self action:@selector(hideDoneBtn) forControlEvents:UIControlEventTouchUpInside];
-    //doneBtn.backgroundColor = [UIColor redColor];
-    [self.view addSubview:doneBtn];
-    self.doneBtn = doneBtn;
+//    UIButton *doneBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    doneBtn.frame = CGRectMake( keyboardF.size.width - 44 , keyboardF.size.width , 44, 22);
+//    [doneBtn setTitle:@"done" forState: UIControlStateNormal];
+//    [doneBtn addTarget:self action:@selector(hideDoneBtn) forControlEvents:UIControlEventTouchUpInside];
+//    //doneBtn.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:doneBtn];
+//    self.doneBtn = doneBtn;
     
 }
 
@@ -203,7 +263,7 @@
 -(void)hideDoneBtn{
     
     [self.doneBtn removeFromSuperview];
-    [self resignFirstResponder];
+    [self.textView resignFirstResponder];
     
 }
 #pragma mark - UITextViewDelegate
@@ -220,11 +280,11 @@
     
     switch (buttonType) {
         case ComposeToolbarButtonTypeCamera: // 拍照
-           MyLog(@"--- 拍照");
+            [self openCamera];
             break;
             
         case ComposeToolbarButtonTypePicture: // 相册
-              MyLog(@"---相册");
+            [self openALbum];
             break;
             
         case ComposeToolbarButtonTypeMention: // @
@@ -241,6 +301,54 @@
     }
     
 }
+
+#pragma mark - 其他方法
+
+-(void)openCamera{
+    
+    [self openImagePickerController:UIImagePickerControllerSourceTypeCamera];
+    
+}
+
+-(void)openALbum{
+    
+    [self openImagePickerController:UIImagePickerControllerSourceTypePhotoLibrary];
+    
+}
+
+-(void)openImagePickerController:(UIImagePickerControllerSourceType)type{
+    
+    if (![UIImagePickerController isSourceTypeAvailable:type]) {
+        return;
+    }
+    
+    UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
+    ipc.sourceType = type;
+    ipc.delegate = self;
+    [self presentViewController:ipc animated:YES completion:nil];
+    
+}
+
+#pragma mark -UIImagePickerControllerDelegate
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    
+    [self.photosView addPhoto:image];
+    
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            self.picking = NO;
+//        });
+
+}
+
 
 @end
 
