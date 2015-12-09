@@ -14,6 +14,7 @@
 #import "AFNetworking.h"
 #import "MyWBComposeToolbar.h"
 #import "MyWBComposePhotosView.h"
+#import "MyWBEmotionKeyboard.h"
 
 @interface MyWBComposeViewController ()<UITextViewDelegate,MyWBComposeToolbarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
@@ -23,6 +24,12 @@
 @property (nonatomic, weak)MyWBComposePhotosView *photosView;
 
 @property (nonatomic, weak)UIButton *doneBtn;
+
+@property (nonatomic,weak)MyWBEmotionKeyboard *emotionKeyboard;
+/**
+ *  是否正在切换键盘
+ */
+@property (nonatomic,assign)BOOL isSwitchKeyboard;
 @end
 
 @implementation MyWBComposeViewController
@@ -176,7 +183,7 @@
         [self sendWithoutImage];
         
     }
-    [self dismissViewControllerAnimated:YES completion:nil];
+   // [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 
@@ -191,16 +198,21 @@
     params[@"access_token"] = [MyWBAccountTool account].access_token;
     params[@"status"] = self.textView.text;
     
-    MyLog(@"%@",params);
-    
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:hud];
+    hud.labelText = @"发送中";
+      [hud showAnimated:YES whileExecutingBlock:^{
     [mgr POST:@"https://api.weibo.com/2/statuses/update.json" parameters:params success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [MBProgressHUD showSuccess:@"发送成功"];
+        //[MBProgressHUD showSuccess:@"发送成功"];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         MyLog(@"%@",error);
-        [MBProgressHUD showError:@"发送失败 "];
+        //[MBProgressHUD showError:@"发送失败 "];
     }];
     
-    
+      } completionBlock:^{
+          [hud removeFromSuperview];
+          [self dismissViewControllerAnimated:YES completion:nil];
+      }];
 }
 
 -(void)sendWithImage{
@@ -210,22 +222,38 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [MyWBAccountTool account].access_token;
     params[@"status"] = self.textView.text;
+ 
+  
+    MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:hud];
+    hud.labelText = @"发送中";
     
-    [mgr POST:@"https://upload.api.weibo.com/2/statuses/upload.json" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        UIImage *image = [self.photosView.photos firstObject];
-        NSData *data = UIImageJPEGRepresentation(image, 1.0);
-        [formData appendPartWithFileData:data name:@"pic" fileName:@"test.jpg" mimeType:@"image/jpeg"];
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        //[MBProgressHUD showSuccess:@"发送成功"];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-         MyLog(@"sendWithImage --- %@",error);
-        [MBProgressHUD showError:@"发送失败"];
-    }];
+    [hud showAnimated:YES whileExecutingBlock:^{
+        [mgr POST:@"https://upload.api.weibo.com/2/statuses/upload.json" parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            UIImage *image = [self.photosView.photos firstObject];
+            NSData *data = UIImageJPEGRepresentation(image, 1.0);
+            [formData appendPartWithFileData:data name:@"pic" fileName:@"test.jpg" mimeType:@"image/jpeg"];
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            //[MBProgressHUD showSuccess:@"发送成功"];
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            MyLog(@"sendWithImage --- %@",error);
+            // [MBProgressHUD showError:@"发送失败"];
+        }];
+    } completionBlock:^{
+        [hud removeFromSuperview];
+        [self dismissViewControllerAnimated:YES completion:nil];
+           }];
     
   //  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
 -(void)keyboardWiiChangeFrame:(NSNotification *)notification{
+    
+    if (self.isSwitchKeyboard) {
+        return;
+    }
     
     NSDictionary *userInfo = notification.userInfo;
     
@@ -296,13 +324,39 @@
             break;
             
         case ComposeToolbarButtonTypeEmotion: // 表情\键盘
-            MyLog(@"--- 表情");
+          //  MyLog(@"--- 表情");
+            [self switchKeyboard];
             break;
     }
     
 }
 
 #pragma mark - 其他方法
+
+-(void)switchKeyboard{
+    
+    if (self.textView.inputView == nil) {//使用的是系统自带键盘
+        MyWBEmotionKeyboard *emotionKeyboard = [[MyWBEmotionKeyboard alloc] init];
+        emotionKeyboard.width = self.view.width;
+        emotionKeyboard.height = 216;
+        self.textView.inputView = emotionKeyboard;
+    }else{
+        
+        self.textView.inputView = nil;
+        
+    }
+    
+    self.isSwitchKeyboard = YES;
+    
+    [self.textView endEditing:YES];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.textView becomeFirstResponder];
+        
+        self.isSwitchKeyboard = NO;
+    });
+    
+}
 
 -(void)openCamera{
     
