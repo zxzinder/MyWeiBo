@@ -8,6 +8,12 @@
 
 #import "MyWBComposeToolbar.h"
 
+@interface MyWBComposeToolbar()
+
+@property (nonatomic,weak)UIButton  *emotionButton;
+
+@end
+
 @implementation MyWBComposeToolbar
 
 
@@ -27,14 +33,31 @@
         
         [self setupBtn:@"compose_trendbutton_background" highImage:@"compose_trendbutton_background_highlighted" type:ComposeToolbarButtonTypeTrend];
         
-        [self setupBtn:@"compose_emoticonbutton_background" highImage:@"compose_emoticonbutton_background_highlighted" type:ComposeToolbarButtonTypeEmotion];
+       self.emotionButton = [self setupBtn:@"compose_emoticonbutton_background" highImage:@"compose_emoticonbutton_background_highlighted" type:ComposeToolbarButtonTypeEmotion];
         
     }
     
     return self;
 }
 
--(void)setupBtn:(NSString *)image highImage:(NSString *)highImage type:(ComposeToolbarButtonType)type{
+-(void)setShowKeyboardButton:(BOOL)showKeyboardButton{
+    
+    _showKeyboardButton = showKeyboardButton;
+    
+    NSString *image = @"compose_emoticonbutton_background";
+    NSString *highImage = @"compose_emoticonbutton_background_highlighted";
+    
+    if (showKeyboardButton) {
+        image = @"compose_keyboardbutton_background";
+        highImage = @"compose_keyboardbutton_background_highlighted";
+        
+    }
+    
+    [self.emotionButton setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    [self.emotionButton setImage:[UIImage imageNamed:highImage] forState:UIControlStateHighlighted];
+}
+
+-(UIButton *)setupBtn:(NSString *)image highImage:(NSString *)highImage type:(ComposeToolbarButtonType)type{
     
     
     UIButton *btn = [[UIButton alloc] init];
@@ -46,6 +69,8 @@
     btn.tag = type;
     
     [self addSubview:btn];
+    
+    return btn;
     
 }
 

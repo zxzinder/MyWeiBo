@@ -57,6 +57,8 @@
 		CF5F63751C0F321500E2CA1D /* MyWBStatusPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5F63741C0F321500E2CA1D /* MyWBStatusPhotosView.m */; };
 		CF5F63771C0F3D8400E2CA1D /* fakeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF5F63761C0F3D8400E2CA1D /* fakeStatus.plist */; };
 		CF6150111C1875070057B13E /* MyWBEmotionTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6150101C1875070057B13E /* MyWBEmotionTabBarButton.m */; };
+		CF9F4E671C2057EF004E7722 /* EmotionIcons in Resources */ = {isa = PBXBuildFile; fileRef = CF9F4E661C2057EF004E7722 /* EmotionIcons */; };
+		CF9F4E6B1C20590A004E7722 /* MyWBEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E6A1C20590A004E7722 /* MyWBEmotion.m */; };
 		CFA880981C107F5B0001AE07 /* MyWBComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA880971C107F5B0001AE07 /* MyWBComposeViewController.m */; };
 		CFA8809B1C107FD60001AE07 /* MyWBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA8809A1C107FD60001AE07 /* MyWBTextView.m */; };
 /* End PBXBuildFile section */
@@ -179,6 +181,9 @@
 		CF5F63761C0F3D8400E2CA1D /* fakeStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fakeStatus.plist; sourceTree = "<group>"; };
 		CF61500F1C1875070057B13E /* MyWBEmotionTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBEmotionTabBarButton.h; sourceTree = "<group>"; };
 		CF6150101C1875070057B13E /* MyWBEmotionTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotionTabBarButton.m; sourceTree = "<group>"; };
+		CF9F4E661C2057EF004E7722 /* EmotionIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = EmotionIcons; sourceTree = "<group>"; };
+		CF9F4E691C20590A004E7722 /* MyWBEmotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBEmotion.h; sourceTree = "<group>"; };
+		CF9F4E6A1C20590A004E7722 /* MyWBEmotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotion.m; sourceTree = "<group>"; };
 		CFA880961C107F5B0001AE07 /* MyWBComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBComposeViewController.h; sourceTree = "<group>"; };
 		CFA880971C107F5B0001AE07 /* MyWBComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBComposeViewController.m; sourceTree = "<group>"; };
 		CFA880991C107FD60001AE07 /* MyWBTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBTextView.h; sourceTree = "<group>"; };
@@ -283,6 +288,7 @@
 		9AAE62091BFC26430056C52B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CF9F4E661C2057EF004E7722 /* EmotionIcons */,
 				CF5F63761C0F3D8400E2CA1D /* fakeStatus.plist */,
 				9AAE621A1BFC26440056C52B /* Info.plist */,
 				9AAE620A1BFC26430056C52B /* main.m */,
@@ -630,9 +636,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF9F4E681C2058F5004E7722 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF9F4E691C20590A004E7722 /* MyWBEmotion.h */,
+				CF9F4E6A1C20590A004E7722 /* MyWBEmotion.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		CFA880941C107F3E0001AE07 /* Compose(发微博) */ = {
 			isa = PBXGroup;
 			children = (
+				CF9F4E681C2058F5004E7722 /* Model */,
 				9A98F8B01C11880B00A0F32F /* View */,
 				CFA880951C107F3E0001AE07 /* Controller */,
 			);
@@ -768,6 +784,7 @@
 				9AE4D9A51C0BF58B0042AA25 /* MyWBLoadMoreFooter.xib in Resources */,
 				9AAE62861BFC5E060056C52B /* Images.xcassets in Resources */,
 				9AAE62AC1BFC7BA20056C52B /* MyWBTest3ViewController.xib in Resources */,
+				CF9F4E671C2057EF004E7722 /* EmotionIcons in Resources */,
 				9AAE62931BFC69C90056C52B /* MyWBTest2ViewController.xib in Resources */,
 				CF5F63771C0F3D8400E2CA1D /* fakeStatus.plist in Resources */,
 			);
@@ -876,6 +893,7 @@
 				9AF9ABFB1C0D49DA009FDA35 /* MyWBStatusFrame.m in Sources */,
 				9A1C0F741C07026200FA98C3 /* UIWindow+Extension.m in Sources */,
 				CF09C9C01C186DFA007C1272 /* MyWBEmotionKeyboard.m in Sources */,
+				CF9F4E6B1C20590A004E7722 /* MyWBEmotion.m in Sources */,
 				9AFEEC1F1C07FA9E00D52971 /* MyWBTitleButton.m in Sources */,
 				9A5488F71BFF1935008C85D2 /* MyWBTitleMenuViewController.m in Sources */,
 				9A98F8B31C11882C00A0F32F /* MyWBComposeToolbar.m in Sources */,

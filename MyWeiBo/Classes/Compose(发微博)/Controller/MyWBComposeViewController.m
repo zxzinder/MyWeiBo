@@ -25,7 +25,7 @@
 
 @property (nonatomic, weak)UIButton *doneBtn;
 
-@property (nonatomic,weak)MyWBEmotionKeyboard *emotionKeyboard;
+@property (nonatomic,strong)MyWBEmotionKeyboard *emotionKeyboard;
 /**
  *  是否正在切换键盘
  */
@@ -33,6 +33,18 @@
 @end
 
 @implementation MyWBComposeViewController
+
+-(MyWBEmotionKeyboard *)emotionKeyboard{
+    
+    if (!_emotionKeyboard) {
+        self.emotionKeyboard = [[MyWBEmotionKeyboard alloc] init];
+        self.emotionKeyboard.width = self.view.width;
+        self.emotionKeyboard.height = 216;
+    }
+    
+    return _emotionKeyboard;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -336,14 +348,13 @@
 -(void)switchKeyboard{
     
     if (self.textView.inputView == nil) {//使用的是系统自带键盘
-        MyWBEmotionKeyboard *emotionKeyboard = [[MyWBEmotionKeyboard alloc] init];
-        emotionKeyboard.width = self.view.width;
-        emotionKeyboard.height = 216;
-        self.textView.inputView = emotionKeyboard;
+        
+        self.textView.inputView = self.emotionKeyboard;
+        self.toolbar.showKeyboardButton = YES;
     }else{
         
         self.textView.inputView = nil;
-        
+        self.toolbar.showKeyboardButton = NO;
     }
     
     self.isSwitchKeyboard = YES;

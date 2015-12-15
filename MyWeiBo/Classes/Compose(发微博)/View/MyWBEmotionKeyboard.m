@@ -9,25 +9,105 @@
 #import "MyWBEmotionKeyboard.h"
 #import "MyWBEmotionListView.h"
 #import "MyWBEmotionTabBar.h"
+#import "MyWBEmotion.h"
+#import "YYModel.h"
 
 @interface MyWBEmotionKeyboard()<MyWBEmotionTabBarDelegate>
 
-@property (nonatomic,weak)MyWBEmotionListView *listView;
+@property (nonatomic,weak)UIView *contentView;
+
+@property (nonatomic,strong)MyWBEmotionListView *recentListView;
+@property (nonatomic,strong)MyWBEmotionListView *defaultView;
+@property (nonatomic,strong)MyWBEmotionListView *emojiListView;
+@property (nonatomic,strong)MyWBEmotionListView *lxhListView;
 
 @property (nonatomic,weak)MyWBEmotionTabBar *tabBar;
 @end
 
 @implementation MyWBEmotionKeyboard
 
+-(MyWBEmotionListView *)recentListView{
+    
+    if (!_recentListView) {
+        self.recentListView = [[MyWBEmotionListView alloc] init];
+        self.recentListView.backgroundColor = MyWBRandomColor;
+    }
+    
+    return _recentListView;
+    
+}
+
+-(MyWBEmotionListView *)defaultView{
+    
+    if (!_defaultView) {
+        self.defaultView = [[MyWBEmotionListView alloc] init];
+        
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/default/info.plist" ofType:nil];
+        NSArray *arr = [NSArray arrayWithContentsOfFile:path];
+        
+        self.defaultView.emotions = [self arrayToArray:arr];
+        
+        self.defaultView.backgroundColor = MyWBRandomColor;
+        
+    }
+    
+    return _defaultView;
+    
+}
+-(MyWBEmotionListView *)emojiListView{
+    
+    if (!_emojiListView) {
+        self.emojiListView = [[MyWBEmotionListView alloc] init];
+        
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/emoji/info.plist" ofType:nil];
+        NSArray *arr = [NSArray arrayWithContentsOfFile:path];
+        
+        self.emojiListView.emotions = [self arrayToArray:arr];
+        
+        self.emojiListView.backgroundColor = MyWBRandomColor;
+        
+    }
+    
+    return _emojiListView;
+    
+}
+-(MyWBEmotionListView *)lxhListView{
+    
+    if (!_lxhListView) {
+        self.lxhListView = [[MyWBEmotionListView alloc] init];
+        
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"EmotionIcons/lxh/info.plist" ofType:nil];
+        NSArray *arr = [NSArray arrayWithContentsOfFile:path];
+        
+        self.lxhListView.emotions = [self arrayToArray:arr];
+        
+        self.lxhListView.backgroundColor = MyWBRandomColor;
+        
+    }
+    
+    return _lxhListView;
+    
+}
+-(NSMutableArray *)arrayToArray:(NSArray *)arr{
+    
+    NSMutableArray *newEmotions = [NSMutableArray array];
+    for (NSDictionary *dict in arr) {
+        MyWBEmotion *emotion = [MyWBEmotion yy_modelWithDictionary:dict];
+        [newEmotions addObject:emotion];
+    }
+    
+    return newEmotions;
+    
+}
+
 -(instancetype)initWithFrame:(CGRect)frame{
     
     self = [super initWithFrame:frame];
     
     if (self) {
-        MyWBEmotionListView *listView = [[MyWBEmotionListView alloc] init];
-        listView.backgroundColor = MyWBRandomColor;
-        [self addSubview:listView];
-        self.listView = listView;
+        UIView *contentView = [[UIView alloc] init];
+        [self addSubview:contentView];
+        self.contentView = contentView;
         
         MyWBEmotionTabBar *tabBar = [[MyWBEmotionTabBar alloc] init];
         tabBar.delegate = self;
@@ -47,9 +127,12 @@
     self.tabBar.x = 0;
     self.tabBar.y = self.height - self.tabBar.height;
     
-    self.listView.x = self.listView.y = 0;
-    self.listView.width = self.width;
-    self.listView.height = self.tabBar.y;
+    self.contentView.x = self.contentView.y = 0;
+    self.contentView.width = self.width;
+    self.contentView.height = self.tabBar.y;
+    
+    UIView *child = [self.contentView.subviews lastObject];
+    child.frame = self.contentView.bounds;
     
 }
 
@@ -59,18 +142,20 @@
     
     switch (buttonType) {
         case MyWBEmotionTabBarButtonTypeDefault:
-            MyLog(@"默认");
+            [self.contentView addSubview:self.recentListView];
             break;
         case MyWBEmotionTabBarButtonTypeRecent:
-            MyLog(@"最近");
+            [self.contentView addSubview:self.defaultView];
             break;
         case MyWBEmotionTabBarButtonTypeEmoji:
-            MyLog(@"Emoji");
+            [self.contentView addSubview:self.emojiListView];
             break;
         case MyWBEmotionTabBarButtonTypeLxh:
-            MyLog(@"浪小花");
+            [self.contentView addSubview:self.lxhListView];
             break;
     }
+    
+    [self setNeedsLayout];
     
 }
 
