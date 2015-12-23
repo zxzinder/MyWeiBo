@@ -14,13 +14,19 @@
 
 @interface MyWBEmotionKeyboard()<MyWBEmotionTabBarDelegate>
 
-@property (nonatomic,weak)UIView *contentView;
+//@property (nonatomic,weak)UIView *contentView;
+/**
+ *  保存正在显示的listview
+ */
+@property (nonatomic,weak)MyWBEmotionListView *showingListView;
 
 @property (nonatomic,strong)MyWBEmotionListView *recentListView;
 @property (nonatomic,strong)MyWBEmotionListView *defaultView;
 @property (nonatomic,strong)MyWBEmotionListView *emojiListView;
 @property (nonatomic,strong)MyWBEmotionListView *lxhListView;
-
+/**
+ *  tabar
+ */
 @property (nonatomic,weak)MyWBEmotionTabBar *tabBar;
 @end
 
@@ -30,7 +36,7 @@
     
     if (!_recentListView) {
         self.recentListView = [[MyWBEmotionListView alloc] init];
-        self.recentListView.backgroundColor = MyWBRandomColor;
+        //self.recentListView.backgroundColor = MyWBRandomColor;
     }
     
     return _recentListView;
@@ -46,8 +52,8 @@
         NSArray *arr = [NSArray arrayWithContentsOfFile:path];
         
         self.defaultView.emotions = [self arrayToArray:arr];
-        
-        self.defaultView.backgroundColor = MyWBRandomColor;
+        MyLog(@"%lu",(unsigned long)self.defaultView.emotions.count);
+        //self.defaultView.backgroundColor = MyWBRandomColor;
         
     }
     
@@ -64,7 +70,7 @@
         
         self.emojiListView.emotions = [self arrayToArray:arr];
         
-        self.emojiListView.backgroundColor = MyWBRandomColor;
+      //  self.emojiListView.backgroundColor = MyWBRandomColor;
         
     }
     
@@ -81,7 +87,7 @@
         
         self.lxhListView.emotions = [self arrayToArray:arr];
         
-        self.lxhListView.backgroundColor = MyWBRandomColor;
+       // self.lxhListView.backgroundColor = MyWBRandomColor;
         
     }
     
@@ -105,10 +111,7 @@
     self = [super initWithFrame:frame];
     
     if (self) {
-        UIView *contentView = [[UIView alloc] init];
-        [self addSubview:contentView];
-        self.contentView = contentView;
-        
+
         MyWBEmotionTabBar *tabBar = [[MyWBEmotionTabBar alloc] init];
         tabBar.delegate = self;
         [self addSubview:tabBar];
@@ -127,12 +130,11 @@
     self.tabBar.x = 0;
     self.tabBar.y = self.height - self.tabBar.height;
     
-    self.contentView.x = self.contentView.y = 0;
-    self.contentView.width = self.width;
-    self.contentView.height = self.tabBar.y;
+    self.showingListView.x = self.showingListView.y = 0;
+    self.showingListView.width = self.width;
+    self.showingListView.height = self.tabBar.y;
     
-    UIView *child = [self.contentView.subviews lastObject];
-    child.frame = self.contentView.bounds;
+ 
     
 }
 
@@ -140,20 +142,25 @@
 
 -(void)emotionTabBar:(MyWBEmotionTabBar *)tabBar didSelectButton:(MyWBEmotionTabBarButtonType)buttonType{
     
+    [self.showingListView removeFromSuperview];
+    
+    //切换listview
     switch (buttonType) {
         case MyWBEmotionTabBarButtonTypeDefault:
-            [self.contentView addSubview:self.recentListView];
+            [self addSubview:self.defaultView];
             break;
         case MyWBEmotionTabBarButtonTypeRecent:
-            [self.contentView addSubview:self.defaultView];
+            [self addSubview:self.defaultView];
             break;
         case MyWBEmotionTabBarButtonTypeEmoji:
-            [self.contentView addSubview:self.emojiListView];
+            [self addSubview:self.emojiListView];
             break;
         case MyWBEmotionTabBarButtonTypeLxh:
-            [self.contentView addSubview:self.lxhListView];
+            [self addSubview:self.lxhListView];
             break;
     }
+    
+    self.showingListView = [self.subviews lastObject];
     
     [self setNeedsLayout];
     

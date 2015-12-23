@@ -8,11 +8,6 @@
 
 #import "MyWBEmotionTabBarButton.h"
 
-@interface MyWBEmotionTabBarButton()
-
-@property (nonatomic,weak)NSMutableArray *tabBarBtns;
-
-@end
 
 @implementation MyWBEmotionTabBarButton
 

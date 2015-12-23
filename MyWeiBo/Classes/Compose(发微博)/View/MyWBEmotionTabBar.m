@@ -23,7 +23,7 @@
     
     if (self) {
         
-        [self setupBtn:NSLocalizedString(@"recent", nil) type:MyWBEmotionTabBarButtonTypeRecent];
+        [self setupBtn:@"最近" type:MyWBEmotionTabBarButtonTypeRecent];
         [self setupBtn:@"默认" type:MyWBEmotionTabBarButtonTypeDefault];
         [self setupBtn:@"Emoji" type:MyWBEmotionTabBarButtonTypeEmoji];
         [self setupBtn:@"浪小花" type:MyWBEmotionTabBarButtonTypeLxh];
@@ -45,9 +45,6 @@
     
     [self addSubview:btn];
     
-    if (type == MyWBEmotionTabBarButtonTypeDefault) {
-        [self btnClick:btn];
-    }
     
     NSString *image = @"compose_emotion_table_mid_normal";
     NSString *selectedImage = @"compose_emotion_table_mid_selected";
@@ -86,6 +83,14 @@
     }
     
 }
+
+//-(void)setDelegate:(id<MyWBEmotionTabBarDelegate>)delegate{
+//    
+//    _delegate = delegate;
+//    //选中"默认"按钮
+//    [self btnClick:(MyWBEmotionTabBarButton *)[self viewWithTag:MyWBEmotionTabBarButtonTypeDefault]];
+//    
+//}
 
 -(void)btnClick:(MyWBEmotionTabBarButton *)btn{
     
