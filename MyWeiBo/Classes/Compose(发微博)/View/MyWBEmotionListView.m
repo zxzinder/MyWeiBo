@@ -7,6 +7,7 @@
 //  表情键盘顶部的表情内容（显示所有表情）
 
 #import "MyWBEmotionListView.h"
+#import "MyWBEmotionPageView.h"
 //每页表情数
 #define MyWBEmotionPageSize 20
 
@@ -29,7 +30,7 @@
         self.backgroundColor = [UIColor whiteColor];
         
         UIScrollView *scrollView = [[UIScrollView alloc] init];
-        scrollView.backgroundColor = [UIColor redColor];
+    //    scrollView.backgroundColor = [UIColor redColor];
         scrollView.pagingEnabled = YES;
         scrollView.delegate = self;
         
@@ -60,9 +61,22 @@
     
     self.pageControl.numberOfPages = count;
     
-    for (int i = 0 ; self.pageControl.numberOfPages; i++) {
-        UIView *pageView = [[UIView alloc ] init];
-        pageView.backgroundColor = MyWBRandomColor;
+    for (int i = 0 ; i< self.pageControl.numberOfPages; i++) {
+     
+        MyWBEmotionPageView *pageView = [[MyWBEmotionPageView alloc] init];
+        //计算当前页表情范围
+        NSRange range;
+        range.location = i * MyEmotionPageSize;
+        //剩余表情数
+        NSUInteger left = emotions.count - range.location;
+        
+        if (left >= MyEmotionPageSize) {
+            range.length = MyEmotionPageSize;
+        }else{
+            range.length = left;
+        }
+        
+        pageView.emotions = [emotions subarrayWithRange:range];
         [self.scrollView addSubview:pageView];
         
     }
@@ -87,7 +101,7 @@
     NSUInteger count = self.scrollView.subviews.count;
     
     for (int i = 0; i<count; i++) {
-        UIView *pageView = self.scrollView.subviews[i];
+        MyWBEmotionPageView *pageView = self.scrollView.subviews[i];
         pageView.height = self.scrollView.height;
         pageView.width = self.scrollView.width;
         pageView.x = pageView.width * i;

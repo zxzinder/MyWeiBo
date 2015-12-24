@@ -56,6 +56,8 @@
 		CF5F63721C0F2EC700E2CA1D /* MyWBStatusSingleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5F63711C0F2EC700E2CA1D /* MyWBStatusSingleImageView.m */; };
 		CF5F63751C0F321500E2CA1D /* MyWBStatusPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5F63741C0F321500E2CA1D /* MyWBStatusPhotosView.m */; };
 		CF5F63771C0F3D8400E2CA1D /* fakeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF5F63761C0F3D8400E2CA1D /* fakeStatus.plist */; };
+		CF614A711C2C3D0C00B67186 /* MyWBEmotionPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF614A701C2C3D0C00B67186 /* MyWBEmotionPageView.m */; };
+		CF614A741C2C3E5100B67186 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CF614A731C2C3E5100B67186 /* NSString+Emoji.m */; };
 		CF6150111C1875070057B13E /* MyWBEmotionTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6150101C1875070057B13E /* MyWBEmotionTabBarButton.m */; };
 		CF9F4E671C2057EF004E7722 /* EmotionIcons in Resources */ = {isa = PBXBuildFile; fileRef = CF9F4E661C2057EF004E7722 /* EmotionIcons */; };
 		CF9F4E6B1C20590A004E7722 /* MyWBEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E6A1C20590A004E7722 /* MyWBEmotion.m */; };
@@ -179,6 +181,10 @@
 		CF5F63731C0F321500E2CA1D /* MyWBStatusPhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBStatusPhotosView.h; sourceTree = "<group>"; };
 		CF5F63741C0F321500E2CA1D /* MyWBStatusPhotosView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBStatusPhotosView.m; sourceTree = "<group>"; };
 		CF5F63761C0F3D8400E2CA1D /* fakeStatus.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fakeStatus.plist; sourceTree = "<group>"; };
+		CF614A6F1C2C3D0C00B67186 /* MyWBEmotionPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBEmotionPageView.h; sourceTree = "<group>"; };
+		CF614A701C2C3D0C00B67186 /* MyWBEmotionPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotionPageView.m; sourceTree = "<group>"; };
+		CF614A721C2C3E5100B67186 /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
+		CF614A731C2C3E5100B67186 /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		CF61500F1C1875070057B13E /* MyWBEmotionTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBEmotionTabBarButton.h; sourceTree = "<group>"; };
 		CF6150101C1875070057B13E /* MyWBEmotionTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotionTabBarButton.m; sourceTree = "<group>"; };
 		CF9F4E661C2057EF004E7722 /* EmotionIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = EmotionIcons; sourceTree = "<group>"; };
@@ -249,6 +255,8 @@
 				CF09C9C51C186E2B007C1272 /* MyWBEmotionListView.m */,
 				CF61500F1C1875070057B13E /* MyWBEmotionTabBarButton.h */,
 				CF6150101C1875070057B13E /* MyWBEmotionTabBarButton.m */,
+				CF614A6F1C2C3D0C00B67186 /* MyWBEmotionPageView.h */,
+				CF614A701C2C3D0C00B67186 /* MyWBEmotionPageView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -437,6 +445,8 @@
 		9AAE62631BFC27F50056C52B /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				CF614A721C2C3E5100B67186 /* NSString+Emoji.h */,
+				CF614A731C2C3E5100B67186 /* NSString+Emoji.m */,
 				9A1C0F6B1C06E91600FA98C3 /* MBProgressHUD+MJ.h */,
 				9A1C0F6C1C06E91600FA98C3 /* MBProgressHUD+MJ.m */,
 				9AAE62A01BFC785C0056C52B /* UIView+Extension.h */,
@@ -883,6 +893,7 @@
 				9AE2A6C11C0455EB004A1A3F /* MyWBTabBar.m in Sources */,
 				CF5F63721C0F2EC700E2CA1D /* MyWBStatusSingleImageView.m in Sources */,
 				9A1C0F6A1C06B64A00FA98C3 /* MyWBAccount.m in Sources */,
+				CF614A711C2C3D0C00B67186 /* MyWBEmotionPageView.m in Sources */,
 				9AAE627F1BFC2AC40056C52B /* MyWBMessageCenterViewController.m in Sources */,
 				9AB2324A1C0FE82A00612E64 /* NSString+Extension.m in Sources */,
 				9AF9ABFE1C0D4A23009FDA35 /* MyWBStatusCell.m in Sources */,
@@ -901,6 +912,7 @@
 				9A1C0F6D1C06E91600FA98C3 /* MBProgressHUD+MJ.m in Sources */,
 				9AAE62921BFC69C90056C52B /* MyWBTest2ViewController.m in Sources */,
 				9A1C0F711C06FCBD00FA98C3 /* MyWBAccountTool.m in Sources */,
+				CF614A741C2C3E5100B67186 /* NSString+Emoji.m in Sources */,
 				9AFEEC221C0838FF00D52971 /* MyWBUser.m in Sources */,
 				9AAE62761BFC29390056C52B /* AppDelegate.m in Sources */,
 				9A98F8B61C118B8700A0F32F /* MyWBComposePhotosView.m in Sources */,

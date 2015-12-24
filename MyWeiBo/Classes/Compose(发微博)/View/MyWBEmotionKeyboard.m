@@ -52,8 +52,7 @@
         NSArray *arr = [NSArray arrayWithContentsOfFile:path];
         
         self.defaultView.emotions = [self arrayToArray:arr];
-        MyLog(@"%lu",(unsigned long)self.defaultView.emotions.count);
-        //self.defaultView.backgroundColor = MyWBRandomColor;
+            //self.defaultView.backgroundColor = MyWBRandomColor;
         
     }
     
@@ -150,7 +149,7 @@
             [self addSubview:self.defaultView];
             break;
         case MyWBEmotionTabBarButtonTypeRecent:
-            [self addSubview:self.defaultView];
+            [self addSubview:self.recentListView];
             break;
         case MyWBEmotionTabBarButtonTypeEmoji:
             [self addSubview:self.emojiListView];

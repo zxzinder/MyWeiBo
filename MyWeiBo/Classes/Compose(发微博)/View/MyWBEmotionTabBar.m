@@ -84,13 +84,13 @@
     
 }
 
-//-(void)setDelegate:(id<MyWBEmotionTabBarDelegate>)delegate{
-//    
-//    _delegate = delegate;
-//    //选中"默认"按钮
-//    [self btnClick:(MyWBEmotionTabBarButton *)[self viewWithTag:MyWBEmotionTabBarButtonTypeDefault]];
-//    
-//}
+-(void)setDelegate:(id<MyWBEmotionTabBarDelegate>)delegate{
+    
+    _delegate = delegate;
+    //选中"默认"按钮
+    [self btnClick:(MyWBEmotionTabBarButton *)[self viewWithTag:MyWBEmotionTabBarButtonTypeDefault]];
+    
+}
 
 -(void)btnClick:(MyWBEmotionTabBarButton *)btn{
     
