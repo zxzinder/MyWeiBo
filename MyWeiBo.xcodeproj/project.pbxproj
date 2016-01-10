@@ -59,6 +59,9 @@
 		CF614A711C2C3D0C00B67186 /* MyWBEmotionPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF614A701C2C3D0C00B67186 /* MyWBEmotionPageView.m */; };
 		CF614A741C2C3E5100B67186 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = CF614A731C2C3E5100B67186 /* NSString+Emoji.m */; };
 		CF6150111C1875070057B13E /* MyWBEmotionTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF6150101C1875070057B13E /* MyWBEmotionTabBarButton.m */; };
+		CF8A00941C42A44800B7914E /* MyWBEmotionPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8A00931C42A44800B7914E /* MyWBEmotionPopView.m */; };
+		CF8A00961C42A4A700B7914E /* MyWBEmotionPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF8A00951C42A4A700B7914E /* MyWBEmotionPopView.xib */; };
+		CF9B809F1C423F6C00365EC8 /* MyWBEmotionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9B809E1C423F6C00365EC8 /* MyWBEmotionButton.m */; };
 		CF9F4E671C2057EF004E7722 /* EmotionIcons in Resources */ = {isa = PBXBuildFile; fileRef = CF9F4E661C2057EF004E7722 /* EmotionIcons */; };
 		CF9F4E6B1C20590A004E7722 /* MyWBEmotion.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E6A1C20590A004E7722 /* MyWBEmotion.m */; };
 		CFA880981C107F5B0001AE07 /* MyWBComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CFA880971C107F5B0001AE07 /* MyWBComposeViewController.m */; };
@@ -187,6 +190,11 @@
 		CF614A731C2C3E5100B67186 /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		CF61500F1C1875070057B13E /* MyWBEmotionTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBEmotionTabBarButton.h; sourceTree = "<group>"; };
 		CF6150101C1875070057B13E /* MyWBEmotionTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotionTabBarButton.m; sourceTree = "<group>"; };
+		CF8A00921C42A44800B7914E /* MyWBEmotionPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBEmotionPopView.h; sourceTree = "<group>"; };
+		CF8A00931C42A44800B7914E /* MyWBEmotionPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotionPopView.m; sourceTree = "<group>"; };
+		CF8A00951C42A4A700B7914E /* MyWBEmotionPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWBEmotionPopView.xib; sourceTree = "<group>"; };
+		CF9B809D1C423F6C00365EC8 /* MyWBEmotionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBEmotionButton.h; sourceTree = "<group>"; };
+		CF9B809E1C423F6C00365EC8 /* MyWBEmotionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotionButton.m; sourceTree = "<group>"; };
 		CF9F4E661C2057EF004E7722 /* EmotionIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = EmotionIcons; sourceTree = "<group>"; };
 		CF9F4E691C20590A004E7722 /* MyWBEmotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBEmotion.h; sourceTree = "<group>"; };
 		CF9F4E6A1C20590A004E7722 /* MyWBEmotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotion.m; sourceTree = "<group>"; };
@@ -257,6 +265,11 @@
 				CF6150101C1875070057B13E /* MyWBEmotionTabBarButton.m */,
 				CF614A6F1C2C3D0C00B67186 /* MyWBEmotionPageView.h */,
 				CF614A701C2C3D0C00B67186 /* MyWBEmotionPageView.m */,
+				CF9B809D1C423F6C00365EC8 /* MyWBEmotionButton.h */,
+				CF9B809E1C423F6C00365EC8 /* MyWBEmotionButton.m */,
+				CF8A00921C42A44800B7914E /* MyWBEmotionPopView.h */,
+				CF8A00931C42A44800B7914E /* MyWBEmotionPopView.m */,
+				CF8A00951C42A4A700B7914E /* MyWBEmotionPopView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -797,6 +810,7 @@
 				CF9F4E671C2057EF004E7722 /* EmotionIcons in Resources */,
 				9AAE62931BFC69C90056C52B /* MyWBTest2ViewController.xib in Resources */,
 				CF5F63771C0F3D8400E2CA1D /* fakeStatus.plist in Resources */,
+				CF8A00961C42A4A700B7914E /* MyWBEmotionPopView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,6 +904,7 @@
 				CF6150111C1875070057B13E /* MyWBEmotionTabBarButton.m in Sources */,
 				CFA8809B1C107FD60001AE07 /* MyWBTextView.m in Sources */,
 				9AAE62961BFC6D280056C52B /* MyWBNavigationController.m in Sources */,
+				CF8A00941C42A44800B7914E /* MyWBEmotionPopView.m in Sources */,
 				9AE2A6C11C0455EB004A1A3F /* MyWBTabBar.m in Sources */,
 				CF5F63721C0F2EC700E2CA1D /* MyWBStatusSingleImageView.m in Sources */,
 				9A1C0F6A1C06B64A00FA98C3 /* MyWBAccount.m in Sources */,
@@ -905,6 +920,7 @@
 				9A1C0F741C07026200FA98C3 /* UIWindow+Extension.m in Sources */,
 				CF09C9C01C186DFA007C1272 /* MyWBEmotionKeyboard.m in Sources */,
 				CF9F4E6B1C20590A004E7722 /* MyWBEmotion.m in Sources */,
+				CF9B809F1C423F6C00365EC8 /* MyWBEmotionButton.m in Sources */,
 				9AFEEC1F1C07FA9E00D52971 /* MyWBTitleButton.m in Sources */,
 				9A5488F71BFF1935008C85D2 /* MyWBTitleMenuViewController.m in Sources */,
 				9A98F8B31C11882C00A0F32F /* MyWBComposeToolbar.m in Sources */,

@@ -8,8 +8,28 @@
 
 #import "MyWBEmotionPageView.h"
 #import "MyWBEmotion.h"
+#import "MyWBEmotionButton.h"
+#import "MyWBEmotionPopView.h"
+
+@interface MyWBEmotionPageView()
+
+@property (nonatomic,strong)MyWBEmotionPopView *popView;
+
+@end
 
 @implementation MyWBEmotionPageView
+
+-(MyWBEmotionPopView *)popViewP{
+    
+    if (!_popView) {
+        self.popView = [MyWBEmotionPopView popView];
+    }
+    
+    return _popView;
+    
+}
+
+
 
 -(void)setEmotions:(NSArray *)emotions{
     
@@ -18,22 +38,27 @@
     NSUInteger count = emotions.count;
     
     for (int i = 0;  i< count; i++) {
-        UIButton *btn = [[UIButton alloc] init];
-        MyWBEmotion *emotion = emotions[i];
-        
-        if (emotion.png) {
-            [btn setImage:[UIImage imageNamed:emotion.png] forState:UIControlStateNormal];
-        }else if(emotion.code){
-            
-            [btn setTitle:emotion.code.emoji forState:UIControlStateNormal];
-            btn.titleLabel.font = [UIFont systemFontOfSize:32];
-            
-            
-        }
-        
+        MyWBEmotionButton *btn = [[MyWBEmotionButton alloc] init];
         [self addSubview:btn];
         
+        btn.emotion = emotions[i];
+        
+        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     }
+    
+}
+
+-(void)btnClick:(MyWBEmotionButton *)btn{
+
+    self.popView.emotion = btn.emotion;
+    
+    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    
+    [window addSubview:self.popView];
+    
+    CGRect btnFrame = [btn convertRect:btn.bounds toView:nil];
+    self.popView.y = CGRectGetMidY(btnFrame) - self.popView.height;
+    self.popView.centerX = CGRectGetMinX(btnFrame);
     
 }
 
