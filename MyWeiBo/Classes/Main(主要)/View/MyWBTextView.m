@@ -8,21 +8,9 @@
 
 #import "MyWBTextView.h"
 
-@interface MyWBTextView()
-
-@property (nonatomic, weak)UIButton *doneBtn;
-
-@end
 
 @implementation MyWBTextView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 -(id)initWithFrame:(CGRect)frame{
     
@@ -30,8 +18,6 @@
     
     if (self) {
         [NotificationCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:self];
-//        
-//        [NotificationCenter addObserver:self selector:@selector(doneBtn:) name:UIKeyboardDidShowNotification object:nil];
         
     }
     
@@ -39,16 +25,9 @@
     
 }
 
--(void)doneBtn:(NSNotification *)notification{
+-(void)dealloc{
     
-    UIButton *doneBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    doneBtn.frame = CGRectMake(0, 128, 170, 135);
-    [doneBtn setTitle:@"done" forState: UIControlStateNormal];
-    [doneBtn addTarget:self action:@selector(hideDoneBtn) forControlEvents:UIControlEventTouchUpInside];
-    doneBtn.backgroundColor = [UIColor redColor];
-    [self addSubview:doneBtn];
-    self.doneBtn = doneBtn;
-    
+    [NotificationCenter removeObserver:self];
 }
 
 -(void)textDidChange{
@@ -65,16 +44,18 @@
     
 }
 
--(void)hideDoneBtn{
-    
-    [self.doneBtn removeFromSuperview];
-    [self resignFirstResponder];
-    
-}
 
 -(void)setPlaceholderColor:(UIColor *)placeholderColor{
     
     _placeholderColor = placeholderColor;
+    
+    [self setNeedsDisplay];
+    
+}
+
+-(void)setAttributedText:(NSAttributedString *)attributedText{
+    
+    [super setAttributedText:attributedText];
     
     [self setNeedsDisplay];
     

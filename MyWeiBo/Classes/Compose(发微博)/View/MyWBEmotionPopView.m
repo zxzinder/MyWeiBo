@@ -19,7 +19,9 @@
 @implementation MyWBEmotionPopView
 
 +(instancetype)popView{
-    
+
+    UIView *pv = [[[NSBundle mainBundle] loadNibNamed:@"MyWBEmotionPopView" owner:nil options:nil] lastObject];
+    MyLog(@"%f",pv.height);
     return [[[NSBundle mainBundle] loadNibNamed:@"MyWBEmotionPopView" owner:nil options:nil] lastObject];
     
 }

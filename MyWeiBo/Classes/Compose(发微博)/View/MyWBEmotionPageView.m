@@ -15,11 +15,13 @@
 
 @property (nonatomic,strong)MyWBEmotionPopView *popView;
 
+@property (nonatomic,weak)UIButton *deleteBtn;
+
 @end
 
 @implementation MyWBEmotionPageView
 
--(MyWBEmotionPopView *)popViewP{
+-(MyWBEmotionPopView *)popView{
     
     if (!_popView) {
         self.popView = [MyWBEmotionPopView popView];
@@ -29,7 +31,25 @@
     
 }
 
-
+-(instancetype)initWithFrame:(CGRect)frame{
+    
+    self = [super initWithFrame:frame];
+    
+    if (self) {
+        UIButton *deleteBtn = [[UIButton alloc] init];
+        
+        [deleteBtn setImage:[UIImage imageNamed:@"compose_emotion_delete_highlighted"] forState:UIControlStateHighlighted];
+        [deleteBtn setImage:[UIImage imageNamed:@"compose_emotion_delete"] forState:UIControlStateNormal];
+        
+        [deleteBtn addTarget:self action:@selector(deleteClick) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self addSubview:deleteBtn];
+        self.deleteBtn = deleteBtn;
+    }
+    
+    return self;
+    
+}
 
 -(void)setEmotions:(NSArray *)emotions{
     
@@ -48,8 +68,14 @@
     
 }
 
--(void)btnClick:(MyWBEmotionButton *)btn{
+-(void)deleteClick{
+    
+    MyLog(@"deleteClick");
+}
 
+-(void)btnClick:(MyWBEmotionButton *)btn{
+    
+    
     self.popView.emotion = btn.emotion;
     
     UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
@@ -57,10 +83,21 @@
     [window addSubview:self.popView];
     
     CGRect btnFrame = [btn convertRect:btn.bounds toView:nil];
+
     self.popView.y = CGRectGetMidY(btnFrame) - self.popView.height;
-    self.popView.centerX = CGRectGetMinX(btnFrame);
     
+    self.popView.centerX = CGRectGetMidX(btnFrame);
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.popView removeFromSuperview];
+    });
+    
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    userInfo[MyWBSelectEmotionKey] = btn.emotion;
+    [NotificationCenter postNotificationName:MyWBEmotionDidSelectNotification object:nil userInfo:userInfo];
 }
+
+
 
 -(void)layoutSubviews{
     
@@ -77,6 +114,10 @@
         btn.x = inset + (i % MyEmotionMaxCols) * btnW;
         btn.y = inset + (i / MyEmotionMaxCols) * btnH;
     }
+    self.deleteBtn.width = btnW;
+    self.deleteBtn.height = btnH;
+    self.deleteBtn.x = self.width - inset - btnW;
+    self.deleteBtn.y = self.height - btnH;
     
 }
 

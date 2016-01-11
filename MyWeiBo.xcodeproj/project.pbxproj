@@ -53,6 +53,8 @@
 		CF09C9C01C186DFA007C1272 /* MyWBEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = CF09C9BF1C186DFA007C1272 /* MyWBEmotionKeyboard.m */; };
 		CF09C9C31C186E16007C1272 /* MyWBEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CF09C9C21C186E16007C1272 /* MyWBEmotionTabBar.m */; };
 		CF09C9C61C186E2B007C1272 /* MyWBEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF09C9C51C186E2B007C1272 /* MyWBEmotionListView.m */; };
+		CF1BE2D01C43FC23002731BF /* UITextView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BE2CF1C43FC23002731BF /* UITextView+Extension.m */; };
+		CF1BE2D31C43FD3D002731BF /* MyWBEmotionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BE2D21C43FD3D002731BF /* MyWBEmotionTextView.m */; };
 		CF5F63721C0F2EC700E2CA1D /* MyWBStatusSingleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5F63711C0F2EC700E2CA1D /* MyWBStatusSingleImageView.m */; };
 		CF5F63751C0F321500E2CA1D /* MyWBStatusPhotosView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5F63741C0F321500E2CA1D /* MyWBStatusPhotosView.m */; };
 		CF5F63771C0F3D8400E2CA1D /* fakeStatus.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF5F63761C0F3D8400E2CA1D /* fakeStatus.plist */; };
@@ -179,6 +181,10 @@
 		CF09C9C21C186E16007C1272 /* MyWBEmotionTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotionTabBar.m; sourceTree = "<group>"; };
 		CF09C9C41C186E2B007C1272 /* MyWBEmotionListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBEmotionListView.h; sourceTree = "<group>"; };
 		CF09C9C51C186E2B007C1272 /* MyWBEmotionListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotionListView.m; sourceTree = "<group>"; };
+		CF1BE2CE1C43FC23002731BF /* UITextView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Extension.h"; sourceTree = "<group>"; };
+		CF1BE2CF1C43FC23002731BF /* UITextView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Extension.m"; sourceTree = "<group>"; };
+		CF1BE2D11C43FD3D002731BF /* MyWBEmotionTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBEmotionTextView.h; sourceTree = "<group>"; };
+		CF1BE2D21C43FD3D002731BF /* MyWBEmotionTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotionTextView.m; sourceTree = "<group>"; };
 		CF5F63701C0F2EC700E2CA1D /* MyWBStatusSingleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBStatusSingleImageView.h; sourceTree = "<group>"; };
 		CF5F63711C0F2EC700E2CA1D /* MyWBStatusSingleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBStatusSingleImageView.m; sourceTree = "<group>"; };
 		CF5F63731C0F321500E2CA1D /* MyWBStatusPhotosView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBStatusPhotosView.h; sourceTree = "<group>"; };
@@ -270,6 +276,8 @@
 				CF8A00921C42A44800B7914E /* MyWBEmotionPopView.h */,
 				CF8A00931C42A44800B7914E /* MyWBEmotionPopView.m */,
 				CF8A00951C42A4A700B7914E /* MyWBEmotionPopView.xib */,
+				CF1BE2D11C43FD3D002731BF /* MyWBEmotionTextView.h */,
+				CF1BE2D21C43FD3D002731BF /* MyWBEmotionTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -472,6 +480,8 @@
 				9AE5E0701C0EE10D00D6AC4E /* NSDate+Extension.m */,
 				9AB232481C0FE82A00612E64 /* NSString+Extension.h */,
 				9AB232491C0FE82A00612E64 /* NSString+Extension.m */,
+				CF1BE2CE1C43FC23002731BF /* UITextView+Extension.h */,
+				CF1BE2CF1C43FC23002731BF /* UITextView+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -920,9 +930,11 @@
 				9A1C0F741C07026200FA98C3 /* UIWindow+Extension.m in Sources */,
 				CF09C9C01C186DFA007C1272 /* MyWBEmotionKeyboard.m in Sources */,
 				CF9F4E6B1C20590A004E7722 /* MyWBEmotion.m in Sources */,
+				CF1BE2D01C43FC23002731BF /* UITextView+Extension.m in Sources */,
 				CF9B809F1C423F6C00365EC8 /* MyWBEmotionButton.m in Sources */,
 				9AFEEC1F1C07FA9E00D52971 /* MyWBTitleButton.m in Sources */,
 				9A5488F71BFF1935008C85D2 /* MyWBTitleMenuViewController.m in Sources */,
+				CF1BE2D31C43FD3D002731BF /* MyWBEmotionTextView.m in Sources */,
 				9A98F8B31C11882C00A0F32F /* MyWBComposeToolbar.m in Sources */,
 				9AF9972D1C056045000FCF23 /* MyWBNewfeatureViewController.m in Sources */,
 				9A1C0F6D1C06E91600FA98C3 /* MBProgressHUD+MJ.m in Sources */,
