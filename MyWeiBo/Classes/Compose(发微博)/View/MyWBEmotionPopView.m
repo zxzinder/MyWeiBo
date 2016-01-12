@@ -20,17 +20,28 @@
 
 +(instancetype)popView{
 
-    UIView *pv = [[[NSBundle mainBundle] loadNibNamed:@"MyWBEmotionPopView" owner:nil options:nil] lastObject];
-    MyLog(@"%f",pv.height);
     return [[[NSBundle mainBundle] loadNibNamed:@"MyWBEmotionPopView" owner:nil options:nil] lastObject];
     
 }
 
--(void)setEmotion:(MyWBEmotion *)emotion{
+-(void)showFrom:(MyWBEmotionButton *)button{
     
-    _emotion = emotion;
+    if (button == nil) {
+        return;
+    }
     
-    self.emotionButton.emotion = emotion;
+    self.emotionButton.emotion = button.emotion;
+    
+    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+    
+    [window addSubview:self];
+    
+    CGRect btnFrame = [button convertRect:button.bounds toView:nil];
+    
+    self.y = CGRectGetMidY(btnFrame) - self.height;
+    
+    self.centerX = CGRectGetMidX(btnFrame);
+    
     
 }
 

@@ -45,6 +45,9 @@
         
         [self addSubview:deleteBtn];
         self.deleteBtn = deleteBtn;
+//        
+//        [self addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressPageView:)]];
+        
     }
     
     return self;
@@ -70,23 +73,13 @@
 
 -(void)deleteClick{
     
-    MyLog(@"deleteClick");
+    [NotificationCenter postNotificationName:MyWBEmotionDidDeleteNofitication object:nil];
 }
 
 -(void)btnClick:(MyWBEmotionButton *)btn{
     
-    
-    self.popView.emotion = btn.emotion;
-    
-    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
-    
-    [window addSubview:self.popView];
-    
-    CGRect btnFrame = [btn convertRect:btn.bounds toView:nil];
+    [self.popView showFrom:btn];
 
-    self.popView.y = CGRectGetMidY(btnFrame) - self.popView.height;
-    
-    self.popView.centerX = CGRectGetMidX(btnFrame);
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.popView removeFromSuperview];

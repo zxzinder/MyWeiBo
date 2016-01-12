@@ -6,10 +6,12 @@
 //  Copyright © 2016年 MacMini. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "MyWBTextView.h"
 @class MyWBEmotion;
-@interface MyWBEmotionTextView : UITextView
+@interface MyWBEmotionTextView : MyWBTextView
 
 - (void)insertEmotion:(MyWBEmotion *)emotion;
+
+-(NSString *)fullText;
 
 @end

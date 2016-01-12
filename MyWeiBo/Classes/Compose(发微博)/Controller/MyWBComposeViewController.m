@@ -15,10 +15,12 @@
 #import "MyWBComposeToolbar.h"
 #import "MyWBComposePhotosView.h"
 #import "MyWBEmotionKeyboard.h"
+#import "MyWBEmotion.h"
+#import "MyWBEmotionTextView.h"
 
 @interface MyWBComposeViewController ()<UITextViewDelegate,MyWBComposeToolbarDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
-@property (nonatomic,weak)MyWBTextView *textView;
+@property (nonatomic,weak)MyWBEmotionTextView *textView;
 @property (nonatomic, weak)MyWBComposeToolbar *toolbar;
 
 @property (nonatomic, weak)MyWBComposePhotosView *photosView;
@@ -120,7 +122,7 @@
  */
 -(void)setupTextView{
     
-    MyWBTextView *textView = [[MyWBTextView alloc] init];
+    MyWBEmotionTextView *textView = [[MyWBEmotionTextView alloc] init];
     // 垂直方向上永远可以拖拽（有弹簧效果）
     textView.alwaysBounceVertical = YES;
     textView.frame = self.view.bounds;
@@ -133,6 +135,10 @@
     
     [NotificationCenter addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:textView];
     [NotificationCenter addObserver:self selector:@selector(keyboardWiiChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [NotificationCenter addObserver:self selector:@selector(emotionDidSelect:) name:MyWBEmotionDidSelectNotification object:nil];
+    
+    
+    [NotificationCenter addObserver:self selector:@selector(emotionDidDelete:) name:MyWBEmotionDidDeleteNofitication object:nil];
 }
 /**
  UITextField:
@@ -208,7 +214,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
     params[@"access_token"] = [MyWBAccountTool account].access_token;
-    params[@"status"] = self.textView.text;
+    params[@"status"] = self.textView.fullText;
     
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:hud];
@@ -233,7 +239,7 @@
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"access_token"] = [MyWBAccountTool account].access_token;
-    params[@"status"] = self.textView.text;
+    params[@"status"] = self.textView.fullText;
  
   
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
@@ -293,6 +299,18 @@
 //    [self.view addSubview:doneBtn];
 //    self.doneBtn = doneBtn;
     
+}
+
+-(void)emotionDidSelect:(NSNotification *)notification{
+    
+    MyWBEmotion *emotion = notification.userInfo[MyWBSelectEmotionKey];
+    [self.textView insertEmotion:emotion];
+    
+}
+
+-(void)emotionDidDelete:(NSNotification *)notification{
+    
+    [self.textView deleteBackward];
 }
 
 -(void)textDidChange{

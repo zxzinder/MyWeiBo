@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class MyWBEmotion;
+@class MyWBEmotion,MyWBEmotionButton;
 
 @interface MyWBEmotionPopView : UIView
 
 +(instancetype)popView;
 
-@property (nonatomic,strong)MyWBEmotion *emotion;
+-(void)showFrom:(MyWBEmotionButton *)button;
 
 @end

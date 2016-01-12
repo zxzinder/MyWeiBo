@@ -43,5 +43,6 @@
 // 表情选中的通知
 #define MyWBEmotionDidSelectNotification @"MyWBEmotionDidSelectNotification"
 #define MyWBSelectEmotionKey @"MyWBSelectEmotionKey"
-
+//删除表情通知
+#define MyWBEmotionDidDeleteNofitication @"MyWBEmotionDidDeleteNofitication"
 #endif
