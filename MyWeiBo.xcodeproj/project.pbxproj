@@ -53,6 +53,7 @@
 		CF09C9C01C186DFA007C1272 /* MyWBEmotionKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = CF09C9BF1C186DFA007C1272 /* MyWBEmotionKeyboard.m */; };
 		CF09C9C31C186E16007C1272 /* MyWBEmotionTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CF09C9C21C186E16007C1272 /* MyWBEmotionTabBar.m */; };
 		CF09C9C61C186E2B007C1272 /* MyWBEmotionListView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF09C9C51C186E2B007C1272 /* MyWBEmotionListView.m */; };
+		CF0A9DB61C4688CF00BE40D2 /* MyWBEmotionTool.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0A9DB51C4688CF00BE40D2 /* MyWBEmotionTool.m */; };
 		CF1BE2D01C43FC23002731BF /* UITextView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BE2CF1C43FC23002731BF /* UITextView+Extension.m */; };
 		CF1BE2D31C43FD3D002731BF /* MyWBEmotionTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF1BE2D21C43FD3D002731BF /* MyWBEmotionTextView.m */; };
 		CF5F63721C0F2EC700E2CA1D /* MyWBStatusSingleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5F63711C0F2EC700E2CA1D /* MyWBStatusSingleImageView.m */; };
@@ -182,6 +183,8 @@
 		CF09C9C21C186E16007C1272 /* MyWBEmotionTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotionTabBar.m; sourceTree = "<group>"; };
 		CF09C9C41C186E2B007C1272 /* MyWBEmotionListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBEmotionListView.h; sourceTree = "<group>"; };
 		CF09C9C51C186E2B007C1272 /* MyWBEmotionListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotionListView.m; sourceTree = "<group>"; };
+		CF0A9DB41C4688CF00BE40D2 /* MyWBEmotionTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBEmotionTool.h; sourceTree = "<group>"; };
+		CF0A9DB51C4688CF00BE40D2 /* MyWBEmotionTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWBEmotionTool.m; sourceTree = "<group>"; };
 		CF1BE2CE1C43FC23002731BF /* UITextView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Extension.h"; sourceTree = "<group>"; };
 		CF1BE2CF1C43FC23002731BF /* UITextView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Extension.m"; sourceTree = "<group>"; };
 		CF1BE2D11C43FD3D002731BF /* MyWBEmotionTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWBEmotionTextView.h; sourceTree = "<group>"; };
@@ -672,6 +675,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF0A9DB31C4688C300BE40D2 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				CF0A9DB41C4688CF00BE40D2 /* MyWBEmotionTool.h */,
+				CF0A9DB51C4688CF00BE40D2 /* MyWBEmotionTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 		CF9F4E681C2058F5004E7722 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -686,6 +698,7 @@
 		CFA880941C107F3E0001AE07 /* Compose(发微博) */ = {
 			isa = PBXGroup;
 			children = (
+				CF0A9DB31C4688C300BE40D2 /* Tool */,
 				CF9F4E681C2058F5004E7722 /* Model */,
 				9A98F8B01C11880B00A0F32F /* View */,
 				CFA880951C107F3E0001AE07 /* Controller */,
@@ -925,6 +938,7 @@
 				CF5F63721C0F2EC700E2CA1D /* MyWBStatusSingleImageView.m in Sources */,
 				9A1C0F6A1C06B64A00FA98C3 /* MyWBAccount.m in Sources */,
 				CF614A711C2C3D0C00B67186 /* MyWBEmotionPageView.m in Sources */,
+				CF0A9DB61C4688CF00BE40D2 /* MyWBEmotionTool.m in Sources */,
 				9AAE627F1BFC2AC40056C52B /* MyWBMessageCenterViewController.m in Sources */,
 				9AB2324A1C0FE82A00612E64 /* NSString+Extension.m in Sources */,
 				9AF9ABFE1C0D4A23009FDA35 /* MyWBStatusCell.m in Sources */,

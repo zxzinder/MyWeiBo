@@ -10,6 +10,7 @@
 #import "MyWBEmotion.h"
 #import "MyWBEmotionButton.h"
 #import "MyWBEmotionPopView.h"
+#import "MyWBEmotionTool.h"
 
 @interface MyWBEmotionPageView()
 
@@ -85,12 +86,18 @@
         [self.popView removeFromSuperview];
     });
     
-    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-    userInfo[MyWBSelectEmotionKey] = btn.emotion;
-    [NotificationCenter postNotificationName:MyWBEmotionDidSelectNotification object:nil userInfo:userInfo];
+    [self selectEmotion:btn.emotion];
 }
 
-
+-(void)selectEmotion:(MyWBEmotion *)emotion{
+    
+    [MyWBEmotionTool addRecentEmotion:emotion];
+    
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    userInfo[MyWBSelectEmotionKey] = emotion;
+    [NotificationCenter postNotificationName:MyWBEmotionDidSelectNotification object:nil userInfo:userInfo];
+    
+}
 
 -(void)layoutSubviews{
     

@@ -11,6 +11,7 @@
 #import "MyWBEmotionTabBar.h"
 #import "MyWBEmotion.h"
 #import "YYModel.h"
+#import "MyWBEmotionTool.h"
 
 @interface MyWBEmotionKeyboard()<MyWBEmotionTabBarDelegate>
 
@@ -37,6 +38,7 @@
     if (!_recentListView) {
         self.recentListView = [[MyWBEmotionListView alloc] init];
         //self.recentListView.backgroundColor = MyWBRandomColor;
+        self.recentListView.emotions = [MyWBEmotionTool recentEmotions];
     }
     
     return _recentListView;
