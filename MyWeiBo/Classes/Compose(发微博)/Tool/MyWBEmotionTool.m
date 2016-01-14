@@ -10,30 +10,39 @@
 
 
 #import "MyWBEmotionTool.h"
+#import "MyWBEmotion.h"
 
 @implementation MyWBEmotionTool
+
+static NSMutableArray *_recentEmotions;
+
++(void)initialize{
+    
+    _recentEmotions = [NSKeyedUnarchiver unarchiveObjectWithFile:MyWBRecentEmotionsPath];
+    
+    if (_recentEmotions == nil) {
+        _recentEmotions = [NSMutableArray array];
+    }
+    
+}
 
 +(void)addRecentEmotion:(MyWBEmotion *)emotion{
     
     MyLog(@"%@",MyWBRecentEmotionsPath);
     
-    //加载沙盒中的表情数据
-    NSMutableArray *emotions = (NSMutableArray *)[self recentEmotions];
+    [_recentEmotions removeObject:emotion];
     
-    if (emotions == nil) {
-        emotions = [NSMutableArray array];
-    }
-    //将表情数据放到数组最前面
-   // [emotions insertObject:emotion atIndex:0];
-     [emotions addObject:emotion];
+    [_recentEmotions insertObject:emotion atIndex:0];
+
     //将表情写入沙盒
-    [NSKeyedArchiver archiveRootObject:emotions toFile:MyWBRecentEmotionsPath];
+    [NSKeyedArchiver archiveRootObject:_recentEmotions toFile:MyWBRecentEmotionsPath];
+   
 }
 
 +(NSArray *)recentEmotions{
     
     
-    return [NSKeyedUnarchiver unarchiveObjectWithFile:MyWBRecentEmotionsPath];
+    return _recentEmotions;
     
 }
 
